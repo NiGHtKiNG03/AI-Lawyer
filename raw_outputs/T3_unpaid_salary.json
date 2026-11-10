@@ -1,0 +1,538 @@
+{
+  "scenario": "T3_unpaid_salary",
+  "ran_at": "2026-11-11 04:25:52",
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "turns": [
+    {
+      "user_input": "I left my company on 31 August 2026 and they have not paid my last two months of salary.",
+      "response": {
+        "case_id": "c80a542c7a4d41bbbf95f1bc37da2f22",
+        "mode": "ask",
+        "reply": "You mentioned that you left your company on August 31, 2026, and your last two months of salary have not been paid. \n\nTo help you better, please answer these questions:\n1. In which city and state were you working, and what kind of employment was this (for example, a private company, contract, etc.)?\n2. Did you try asking your employer about the delay, and what did they say?\n3. Do you have any written employment agreement, offer letter, or emails/messages about your salary?",
+        "guidance": null,
+        "citations": [],
+        "wants_document": null,
+        "case": {
+          "id": "c80a542c7a4d41bbbf95f1bc37da2f22",
+          "language": "en",
+          "category": "employment",
+          "title": "Unpaid salary for last two months",
+          "summary": "The user left their company on 31 August 2026 and states that their last two months of salary have not been paid.",
+          "slots": {
+            "unpaid_period": "last two months",
+            "last_working_day": "31 August 2026"
+          },
+          "amount_inr": null,
+          "parties": [
+            {
+              "role": "employee",
+              "name": null
+            },
+            {
+              "role": "employer",
+              "name": null
+            }
+          ],
+          "timeline": [
+            {
+              "date": "31 August 2026",
+              "event": "User left the company (last working day)"
+            }
+          ],
+          "evidence": [],
+          "facts_provided": [
+            "User left the company on 31 August 2026",
+            "Last two months of salary are unpaid"
+          ],
+          "ai_interpretations": [
+            "May be an unpaid or delayed salary issue under employment category"
+          ],
+          "flags": [],
+          "followup_rounds": 1,
+          "guidance_done": false,
+          "missing_information": [
+            {
+              "key": "location",
+              "question": "Indian state and city where the dispute arose or where the user lives/works"
+            },
+            {
+              "key": "employment_type",
+              "question": "Type of employment (private company, government, contract/consultant, domestic work, etc.)"
+            },
+            {
+              "key": "salary_terms",
+              "question": "Written salary terms (offer letter, contract, payslips) and monthly amount"
+            },
+            {
+              "key": "proof_available",
+              "question": "Evidence available: offer letter, payslips, bank statements, emails/messages with employer"
+            },
+            {
+              "key": "employer_response",
+              "question": "What the employer has said about the non-payment"
+            }
+          ],
+          "escalation": [],
+          "documents_available": [
+            "salary_demand",
+            "grievance_application",
+            "reply_to_notice"
+          ]
+        },
+        "flags_this_turn": []
+      },
+      "raw_llm_outputs": [
+        {
+          "step": "analyze",
+          "raw_llm_output": "{\n  \"category\": \"employment\",\n  \"language\": \"en\",\n  \"title\": \"Unpaid salary for last two months\",\n  \"summary\": \"The user left their company on 31 August 2026 and states that their last two months of salary have not been paid.\",\n  \"slots\": {\n    \"location\": null,\n    \"employment_type\": null,\n    \"salary_terms\": null,\n    \"unpaid_period\": \"last two months\",\n    \"last_working_day\": \"31 August 2026\",\n    \"proof_available\": null,\n    \"employer_response\": null\n  },\n  \"amount_inr\": null,\n  \"parties\": [\n    {\n      \"role\": \"employee\",\n      \"name\": null\n    },\n    {\n      \"role\": \"employer\",\n      \"name\": null\n    }\n  ],\n  \"timeline\": [\n    {\n      \"date\": \"31 August 2026\",\n      \"event\": \"User left the company (last working day)\"\n    }\n  ],\n  \"evidence\": [],\n  \"facts_provided\": [\n    \"User left the company on 31 August 2026\",\n    \"Last two months of salary are unpaid\"\n  ],\n  \"ai_interpretations\": [\n    \"May be an unpaid or delayed salary issue under employment category\"\n  ],\n  \"cited_sections\": [],\n  \"wants_document\": null,\n  \"asks_for_guidance_now\": false\n}"
+        },
+        {
+          "step": "ask",
+          "raw_llm_output": "You mentioned that you left your company on August 31, 2026, and your last two months of salary have not been paid. \n\nTo help you better, please answer these questions:\n1. In which city and state were you working, and what kind of employment was this (for example, a private company, contract, etc.)?\n2. Did you try asking your employer about the delay, and what did they say?\n3. Do you have any written employment agreement, offer letter, or emails/messages about your salary?"
+        }
+      ]
+    },
+    {
+      "user_input": "It is a private IT company in Gurugram, Haryana. I was a full-time permanent employee, salary Rs 45,000 per month as per my offer letter. The unpaid months are July and August 2026. HR keeps saying it is being processed. I have the offer letter, payslips up to June, bank statements and emails with HR.",
+      "response": {
+        "case_id": "c80a542c7a4d41bbbf95f1bc37da2f22",
+        "mode": "guidance",
+        "reply": "The user is a former full-time employee of a private IT company in Gurugram, Haryana, who left on 31 August 2026. Their monthly salary of Rs 45,000 for July and August 2026, totaling Rs 90,000, remains unpaid despite follow-ups, with HR claiming processing is underway.\n\nI have prepared guidance based on what you shared. Open the Guidance tab to see your options, the verified legal references, and the documents I can draft. Please read the uncertainties section too.",
+        "guidance": {
+          "problem": "The user is a former full-time employee of a private IT company in Gurugram, Haryana, who left on 31 August 2026. Their monthly salary of Rs 45,000 for July and August 2026, totaling Rs 90,000, remains unpaid despite follow-ups, with HR claiming processing is underway.",
+          "rights": [
+            {
+              "text": "Salary disputes are dealt with under the Code on Wages, 2019, which repealed the older Payment of Wages Act 1936.",
+              "kind": "interpretation",
+              "kb_ids": [
+                "WAGES-CODE-STATUS"
+              ],
+              "supported": true
+            },
+            {
+              "text": "The Code on Wages provides time limits for paying wages, and secondary sources indicate that wages for an employee who resigns or leaves may be due within a short window, though exact state rules should be confirmed.",
+              "kind": "interpretation",
+              "kb_ids": [
+                "WAGES-TIMELY-PAYMENT"
+              ],
+              "supported": true
+            },
+            {
+              "text": "Secondary sources report that claims for unpaid wages under the Code can generally be made within three years.",
+              "kind": "general_information",
+              "kb_ids": [
+                "WAGES-CLAIM-LIMITATION"
+              ],
+              "supported": true
+            }
+          ],
+          "remedies": [
+            {
+              "text": "Unpaid wage claims are generally taken to the labour authority of the state where the workplace is located, with a written demand to the employer being a usual first step.",
+              "kind": "general_information",
+              "kb_ids": [
+                "WAGES-FORUM"
+              ],
+              "supported": true
+            },
+            {
+              "text": "Eligible persons may access free legal services or settlement through Lok Adalats via District Legal Services Authorities.",
+              "kind": "general_information",
+              "kb_ids": [
+                "FREE-LEGAL-AID"
+              ],
+              "supported": true
+            }
+          ],
+          "next_steps": [
+            "Send a formal written demand letter to the employer requesting the immediate release of the unpaid salary for July and August 2026.",
+            "Check the correct state labour department office, forms, and online filing options for Gurugram, Haryana.",
+            "Consult a labour advocate or the state labour office to confirm how the Code on Wages, 2019 rules apply to your employment status."
+          ],
+          "evidence_to_preserve": [
+            "Offer letter",
+            "Payslips up to June 2026",
+            "Bank statements",
+            "Email correspondence with HR regarding the unpaid salary"
+          ],
+          "uncertainties": [
+            "Whether the Code on Wages covers this specific worker depends on the definition of an employee.",
+            "State-specific rules and timelines under the Code on Wages in Haryana must be confirmed.",
+            "The exact forum, office, and forms required for filing a complaint in Haryana should be verified with the state labour department."
+          ],
+          "advocate_recommended": true,
+          "advocate_reasons": [
+            "State-specific rules and procedures under the Code on Wages require professional verification.",
+            "An advocate can help draft a legally sound formal demand letter and guide you through the correct labour authority forum."
+          ],
+          "advocate_reasons_system": [],
+          "citations": [
+            {
+              "id": "WAGES-CODE-STATUS",
+              "act": "Code on Wages, 2019",
+              "section": "69",
+              "title": "Wage laws changed in November 2025: Payment of Wages Act is repealed",
+              "source_url": "https://www.indiacode.nic.in/",
+              "source_type": "official_portal",
+              "verification": "secondary_verified",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "State rules differ in readiness. Whether the Code covers a particular worker depends on whether they are an 'employee' as defined; an advocate or labour office should confirm."
+            },
+            {
+              "id": "WAGES-TIMELY-PAYMENT",
+              "act": "Code on Wages, 2019",
+              "section": "17",
+              "title": "Time limit for paying wages, including on leaving a job",
+              "source_url": "https://www.indiacode.nic.in/",
+              "source_type": "official_portal",
+              "verification": "secondary_verified",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "Exact periods and any state-specific rules should be confirmed."
+            },
+            {
+              "id": "WAGES-CLAIM-LIMITATION",
+              "act": "Code on Wages, 2019",
+              "section": "45",
+              "title": "Time limit for claiming unpaid wages",
+              "source_url": "https://www.indiacode.nic.in/",
+              "source_type": "official_portal",
+              "verification": "single_secondary",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "Provisional. Confirm before relying on any deadline."
+            },
+            {
+              "id": "WAGES-FORUM",
+              "act": "State labour department / authority under the Code on Wages, 2019",
+              "section": null,
+              "title": "Where an unpaid salary complaint goes",
+              "source_url": "https://labour.gov.in/",
+              "source_type": "official_portal",
+              "verification": "general_principle",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "State-specific. Do not assume the office or form."
+            },
+            {
+              "id": "FREE-LEGAL-AID",
+              "act": "Legal Services Authorities Act, 1987 (NALSA and State/District Legal Services Authorities)",
+              "section": null,
+              "title": "Free legal aid, Lok Adalat and mediation",
+              "source_url": "https://nalsa.gov.in/",
+              "source_type": "official_portal",
+              "verification": "general_principle",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "Eligibility and process vary; confirm with the local authority."
+            }
+          ],
+          "removed_references": [],
+          "missing_information": [],
+          "disclaimer": "This AI Legal Assistant provides general legal information and assistance based on the information provided by the user. It is not a substitute for advice or representation from a qualified advocate in India. AI-generated responses may contain errors or omissions. Important legal decisions and documents should be reviewed by a qualified legal professional."
+        },
+        "citations": [],
+        "wants_document": null,
+        "case": {
+          "id": "c80a542c7a4d41bbbf95f1bc37da2f22",
+          "language": "en",
+          "category": "employment",
+          "title": "Unpaid salary for July and August 2026",
+          "summary": "The user, a full-time permanent employee at a private IT company in Gurugram, Haryana, states that their salary for July and August 2026 amounting to Rs 45,000 per month remains unpaid after leaving on 31 August 2026. HR claims the payment is being processed, and the user holds an offer letter, payslips, bank statements, and email correspondence as proof.",
+          "slots": {
+            "unpaid_period": "July and August 2026",
+            "last_working_day": "31 August 2026",
+            "location": "Gurugram, Haryana",
+            "employment_type": "private IT company, full-time permanent employee",
+            "salary_terms": "Rs 45,000 per month as per offer letter",
+            "proof_available": "offer letter, payslips up to June, bank statements and emails with HR",
+            "employer_response": "HR keeps saying it is being processed"
+          },
+          "amount_inr": 90000,
+          "parties": [
+            {
+              "role": "employee",
+              "name": null
+            },
+            {
+              "role": "employer",
+              "name": null
+            }
+          ],
+          "timeline": [
+            {
+              "date": "31 August 2026",
+              "event": "User left the company (last working day)"
+            },
+            {
+              "date": null,
+              "event": "HR stated that salary processing is underway in response to follow-ups"
+            }
+          ],
+          "evidence": [
+            "offer letter",
+            "payslips up to June",
+            "bank statements",
+            "emails with HR"
+          ],
+          "facts_provided": [
+            "User left the company on 31 August 2026",
+            "Last two months of salary (July and August 2026) are unpaid",
+            "Employed at a private IT company in Gurugram, Haryana as a full-time permanent employee",
+            "Monthly salary is Rs 45,000 as per offer letter",
+            "HR claims the unpaid salary is being processed",
+            "Has offer letter, payslips up to June, bank statements and emails with HR"
+          ],
+          "ai_interpretations": [
+            "May be an unpaid salary issue under employment category with documented proof of employment and salary terms"
+          ],
+          "flags": [],
+          "followup_rounds": 1,
+          "guidance_done": true,
+          "guidance": {
+            "problem": "The user is a former full-time employee of a private IT company in Gurugram, Haryana, who left on 31 August 2026. Their monthly salary of Rs 45,000 for July and August 2026, totaling Rs 90,000, remains unpaid despite follow-ups, with HR claiming processing is underway.",
+            "rights": [
+              {
+                "text": "Salary disputes are dealt with under the Code on Wages, 2019, which repealed the older Payment of Wages Act 1936.",
+                "kind": "interpretation",
+                "kb_ids": [
+                  "WAGES-CODE-STATUS"
+                ],
+                "supported": true
+              },
+              {
+                "text": "The Code on Wages provides time limits for paying wages, and secondary sources indicate that wages for an employee who resigns or leaves may be due within a short window, though exact state rules should be confirmed.",
+                "kind": "interpretation",
+                "kb_ids": [
+                  "WAGES-TIMELY-PAYMENT"
+                ],
+                "supported": true
+              },
+              {
+                "text": "Secondary sources report that claims for unpaid wages under the Code can generally be made within three years.",
+                "kind": "general_information",
+                "kb_ids": [
+                  "WAGES-CLAIM-LIMITATION"
+                ],
+                "supported": true
+              }
+            ],
+            "remedies": [
+              {
+                "text": "Unpaid wage claims are generally taken to the labour authority of the state where the workplace is located, with a written demand to the employer being a usual first step.",
+                "kind": "general_information",
+                "kb_ids": [
+                  "WAGES-FORUM"
+                ],
+                "supported": true
+              },
+              {
+                "text": "Eligible persons may access free legal services or settlement through Lok Adalats via District Legal Services Authorities.",
+                "kind": "general_information",
+                "kb_ids": [
+                  "FREE-LEGAL-AID"
+                ],
+                "supported": true
+              }
+            ],
+            "next_steps": [
+              "Send a formal written demand letter to the employer requesting the immediate release of the unpaid salary for July and August 2026.",
+              "Check the correct state labour department office, forms, and online filing options for Gurugram, Haryana.",
+              "Consult a labour advocate or the state labour office to confirm how the Code on Wages, 2019 rules apply to your employment status."
+            ],
+            "evidence_to_preserve": [
+              "Offer letter",
+              "Payslips up to June 2026",
+              "Bank statements",
+              "Email correspondence with HR regarding the unpaid salary"
+            ],
+            "uncertainties": [
+              "Whether the Code on Wages covers this specific worker depends on the definition of an employee.",
+              "State-specific rules and timelines under the Code on Wages in Haryana must be confirmed.",
+              "The exact forum, office, and forms required for filing a complaint in Haryana should be verified with the state labour department."
+            ],
+            "advocate_recommended": true,
+            "advocate_reasons": [
+              "State-specific rules and procedures under the Code on Wages require professional verification.",
+              "An advocate can help draft a legally sound formal demand letter and guide you through the correct labour authority forum."
+            ],
+            "advocate_reasons_system": [],
+            "citations": [
+              {
+                "id": "WAGES-CODE-STATUS",
+                "act": "Code on Wages, 2019",
+                "section": "69",
+                "title": "Wage laws changed in November 2025: Payment of Wages Act is repealed",
+                "source_url": "https://www.indiacode.nic.in/",
+                "source_type": "official_portal",
+                "verification": "secondary_verified",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "State rules differ in readiness. Whether the Code covers a particular worker depends on whether they are an 'employee' as defined; an advocate or labour office should confirm."
+              },
+              {
+                "id": "WAGES-TIMELY-PAYMENT",
+                "act": "Code on Wages, 2019",
+                "section": "17",
+                "title": "Time limit for paying wages, including on leaving a job",
+                "source_url": "https://www.indiacode.nic.in/",
+                "source_type": "official_portal",
+                "verification": "secondary_verified",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "Exact periods and any state-specific rules should be confirmed."
+              },
+              {
+                "id": "WAGES-CLAIM-LIMITATION",
+                "act": "Code on Wages, 2019",
+                "section": "45",
+                "title": "Time limit for claiming unpaid wages",
+                "source_url": "https://www.indiacode.nic.in/",
+                "source_type": "official_portal",
+                "verification": "single_secondary",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "Provisional. Confirm before relying on any deadline."
+              },
+              {
+                "id": "WAGES-FORUM",
+                "act": "State labour department / authority under the Code on Wages, 2019",
+                "section": null,
+                "title": "Where an unpaid salary complaint goes",
+                "source_url": "https://labour.gov.in/",
+                "source_type": "official_portal",
+                "verification": "general_principle",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "State-specific. Do not assume the office or form."
+              },
+              {
+                "id": "FREE-LEGAL-AID",
+                "act": "Legal Services Authorities Act, 1987 (NALSA and State/District Legal Services Authorities)",
+                "section": null,
+                "title": "Free legal aid, Lok Adalat and mediation",
+                "source_url": "https://nalsa.gov.in/",
+                "source_type": "official_portal",
+                "verification": "general_principle",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "Eligibility and process vary; confirm with the local authority."
+              }
+            ],
+            "removed_references": [],
+            "missing_information": [],
+            "disclaimer": "This AI Legal Assistant provides general legal information and assistance based on the information provided by the user. It is not a substitute for advice or representation from a qualified advocate in India. AI-generated responses may contain errors or omissions. Important legal decisions and documents should be reviewed by a qualified legal professional."
+          },
+          "missing_information": [],
+          "escalation": [],
+          "documents_available": [
+            "salary_demand",
+            "grievance_application",
+            "reply_to_notice"
+          ]
+        },
+        "flags_this_turn": []
+      },
+      "raw_llm_outputs": [
+        {
+          "step": "analyze",
+          "raw_llm_output": "{\n  \"category\": \"employment\",\n  \"language\": \"en\",\n  \"title\": \"Unpaid salary for July and August 2026\",\n  \"summary\": \"The user, a full-time permanent employee at a private IT company in Gurugram, Haryana, states that their salary for July and August 2026 amounting to Rs 45,000 per month remains unpaid after leaving on 31 August 2026. HR claims the payment is being processed, and the user holds an offer letter, payslips, bank statements, and email correspondence as proof.\",\n  \"slots\": {\n    \"location\": \"Gurugram, Haryana\",\n    \"employment_type\": \"private IT company, full-time permanent employee\",\n    \"salary_terms\": \"Rs 45,000 per month as per offer letter\",\n    \"unpaid_period\": \"July and August 2026\",\n    \"last_working_day\": \"31 August 2026\",\n    \"proof_available\": \"offer letter, payslips up to June, bank statements and emails with HR\",\n    \"employer_response\": \"HR keeps saying it is being processed\"\n  },\n  \"amount_inr\": 90000,\n  \"parties\": [\n    {\n      \"role\": \"employee\",\n      \"name\": null\n    },\n    {\n      \"role\": \"employer\",\n      \"name\": null\n    }\n  ],\n  \"timeline\": [\n    {\n      \"date\": \"31 August 2026\",\n      \"event\": \"User left the company (last working day)\"\n    },\n    {\n      \"date\": null,\n      \"event\": \"HR stated that salary processing is underway in response to follow-ups\"\n    }\n  ],\n  \"evidence\": [\n    \"offer letter\",\n    \"payslips up to June\",\n    \"bank statements\",\n    \"emails with HR\"\n  ],\n  \"facts_provided\": [\n    \"User left the company on 31 August 2026\",\n    \"Last two months of salary (July and August 2026) are unpaid\",\n    \"Employed at a private IT company in Gurugram, Haryana as a full-time permanent employee\",\n    \"Monthly salary is Rs 45,000 as per offer letter\",\n    \"HR claims the unpaid salary is being processed\",\n    \"Has offer letter, payslips up to June, bank statements and emails with HR\"\n  ],\n  \"ai_interpretations\": [\n    \"May be an unpaid salary issue under employment category with documented proof of employment and salary terms\"\n  ],\n  \"cited_sections\": [],\n  \"wants_document\": null,\n  \"asks_for_guidance_now\": false\n}"
+        },
+        {
+          "step": "guidance",
+          "raw_llm_output": "{\n  \"problem\": \"The user is a former full-time employee of a private IT company in Gurugram, Haryana, who left on 31 August 2026. Their monthly salary of Rs 45,000 for July and August 2026, totaling Rs 90,000, remains unpaid despite follow-ups, with HR claiming processing is underway.\",\n  \"rights\": [\n    {\n      \"text\": \"Salary disputes are dealt with under the Code on Wages, 2019, which repealed the older Payment of Wages Act 1936.\",\n      \"kind\": \"interpretation\",\n      \"kb_ids\": [\n        \"WAGES-CODE-STATUS\"\n      ]\n    },\n    {\n      \"text\": \"The Code on Wages provides time limits for paying wages, and secondary sources indicate that wages for an employee who resigns or leaves may be due within a short window, though exact state rules should be confirmed.\",\n      \"kind\": \"interpretation\",\n      \"kb_ids\": [\n        \"WAGES-TIMELY-PAYMENT\"\n      ]\n    },\n    {\n      \"text\": \"Secondary sources report that claims for unpaid wages under the Code can generally be made within three years.\",\n      \"kind\": \"general_information\",\n      \"kb_ids\": [\n        \"WAGES-CLAIM-LIMITATION\"\n      ]\n    }\n  ],\n  \"remedies\": [\n    {\n      \"text\": \"Unpaid wage claims are generally taken to the labour authority of the state where the workplace is located, with a written demand to the employer being a usual first step.\",\n      \"kind\": \"general_information\",\n      \"kb_ids\": [\n        \"WAGES-FORUM\"\n      ]\n    },\n    {\n      \"text\": \"Eligible persons may access free legal services or settlement through Lok Adalats via District Legal Services Authorities.\",\n      \"kind\": \"general_information\",\n      \"kb_ids\": [\n        \"FREE-LEGAL-AID\"\n      ]\n    }\n  ],\n  \"next_steps\": [\n    \"Send a formal written demand letter to the employer requesting the immediate release of the unpaid salary for July and August 2026.\",\n    \"Check the correct state labour department office, forms, and online filing options for Gurugram, Haryana.\",\n    \"Consult a labour advocate or the state labour office to confirm how the Code on Wages, 2019 rules apply to your employment status.\"\n  ],\n  \"evidence_to_preserve\": [\n    \"Offer letter\",\n    \"Payslips up to June 2026\",\n    \"Bank statements\",\n    \"Email correspondence with HR regarding the unpaid salary\"\n  ],\n  \"uncertainties\": [\n    \"Whether the Code on Wages covers this specific worker depends on the definition of an employee.\",\n    \"State-specific rules and timelines under the Code on Wages in Haryana must be confirmed.\",\n    \"The exact forum, office, and forms required for filing a complaint in Haryana should be verified with the state labour department.\"\n  ],\n  \"advocate_recommended\": true,\n  \"advocate_reasons\": [\n    \"State-specific rules and procedures under the Code on Wages require professional verification.\",\n    \"An advocate can help draft a legally sound formal demand letter and guide you through the correct labour authority forum.\"\n  ]\n}"
+        }
+      ]
+    }
+  ],
+  "document": {
+    "result": {
+      "title": "Demand Letter for Unpaid Salary",
+      "body": "[Sender's Full Name]\n[Sender's Address]\n[Sender's Phone Number]\n[Sender's Email Address]\n\nDate: [Date]\n\nTo,\n[Employer/HR Manager's Full Name]\n[Employer/Company Name]\n[Employer's Full Address]\n\nSubject: Demand for payment of unpaid salary for the period of July and August 2026\n\nDear [Employer/HR Manager's Full Name],\n\n1. I, [Sender's Full Name], was employed as a full-time permanent employee at your private IT company located in Gurugram, Haryana, with a monthly salary of Rs 45,000 as per my offer letter.\n\n2. My last working day at the company was 31 August 2026.\n\n3. My salary for the months of July 2026 and August 2026, amounting to a total of Rs 90,000 (Rs 45,000 per month), remains unpaid.\n\n4. Despite my follow-ups and your responses stating that the salary processing is underway, the dues have not been credited to my account.\n\nAs per the Code on Wages, 2019, including Section 17 and Section 45, unpaid wages are legally required to be paid, and claims may be pursued within the specified limitation period.\n\nI hereby demand that you clear my total unpaid salary of Rs 90,000 within [Number of Days, e.g., 15] days from the receipt of this letter by transferring the amount to my designated bank account.\n\nIf the payment is not made within the specified period, I may pursue available legal remedies, including approaching the State labour department or authority under the Code on Wages, 2019, and utilizing services under the Legal Services Authorities Act, 1987.\n\nEnclosures:\n- Offer letter\n- Payslips up to June\n- Bank statements\n- Emails with HR\n\nSincerely,\n\n[Sender's Full Name]",
+      "banner": "AI-GENERATED DRAFT. Review carefully and have a qualified advocate check it before sending or filing. This draft has not been served, filed or accepted by any authority. Replace every [bracketed placeholder] with real information.",
+      "placeholders": [
+        "[Sender's Full Name]",
+        "[Sender's Address]",
+        "[Sender's Phone Number]",
+        "[Sender's Email Address]",
+        "[Date]",
+        "[Employer/HR Manager's Full Name]",
+        "[Employer/Company Name]",
+        "[Employer's Full Address]",
+        "[Number of Days, e.g., 15]"
+      ],
+      "notes_for_user": [
+        "Fill in all bracketed placeholders such as sender details, employer details, and the date.",
+        "Specify a reasonable number of days for the deadline (e.g., 15 days).",
+        "Verify the exact state-specific rules and forum details with the labour department if legal action becomes necessary."
+      ],
+      "citations": [
+        {
+          "id": "WAGES-CODE-STATUS",
+          "act": "Code on Wages, 2019",
+          "section": "69",
+          "title": "Wage laws changed in November 2025: Payment of Wages Act is repealed",
+          "source_url": "https://www.indiacode.nic.in/",
+          "source_type": "official_portal",
+          "verification": "secondary_verified",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "State rules differ in readiness. Whether the Code covers a particular worker depends on whether they are an 'employee' as defined; an advocate or labour office should confirm."
+        },
+        {
+          "id": "WAGES-TIMELY-PAYMENT",
+          "act": "Code on Wages, 2019",
+          "section": "17",
+          "title": "Time limit for paying wages, including on leaving a job",
+          "source_url": "https://www.indiacode.nic.in/",
+          "source_type": "official_portal",
+          "verification": "secondary_verified",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "Exact periods and any state-specific rules should be confirmed."
+        },
+        {
+          "id": "WAGES-CLAIM-LIMITATION",
+          "act": "Code on Wages, 2019",
+          "section": "45",
+          "title": "Time limit for claiming unpaid wages",
+          "source_url": "https://www.indiacode.nic.in/",
+          "source_type": "official_portal",
+          "verification": "single_secondary",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "Provisional. Confirm before relying on any deadline."
+        },
+        {
+          "id": "WAGES-FORUM",
+          "act": "State labour department / authority under the Code on Wages, 2019",
+          "section": null,
+          "title": "Where an unpaid salary complaint goes",
+          "source_url": "https://labour.gov.in/",
+          "source_type": "official_portal",
+          "verification": "general_principle",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "State-specific. Do not assume the office or form."
+        },
+        {
+          "id": "FREE-LEGAL-AID",
+          "act": "Legal Services Authorities Act, 1987 (NALSA and State/District Legal Services Authorities)",
+          "section": null,
+          "title": "Free legal aid, Lok Adalat and mediation",
+          "source_url": "https://nalsa.gov.in/",
+          "source_type": "official_portal",
+          "verification": "general_principle",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "Eligibility and process vary; confirm with the local authority."
+        }
+      ],
+      "removed_references": [],
+      "language": "en",
+      "doc_type": "salary_demand"
+    },
+    "raw_llm_outputs": [
+      {
+        "step": "document",
+        "raw_llm_output": "{\n  \"title\": \"Demand Letter for Unpaid Salary\",\n  \"body\": \"[Sender's Full Name]\\n[Sender's Address]\\n[Sender's Phone Number]\\n[Sender's Email Address]\\n\\nDate: [Date]\\n\\nTo,\\n[Employer/HR Manager's Full Name]\\n[Employer/Company Name]\\n[Employer's Full Address]\\n\\nSubject: Demand for payment of unpaid salary for the period of July and August 2026\\n\\nDear [Employer/HR Manager's Full Name],\\n\\n1. I, [Sender's Full Name], was employed as a full-time permanent employee at your private IT company located in Gurugram, Haryana, with a monthly salary of Rs 45,000 as per my offer letter.\\n\\n2. My last working day at the company was 31 August 2026.\\n\\n3. My salary for the months of July 2026 and August 2026, amounting to a total of Rs 90,000 (Rs 45,000 per month), remains unpaid.\\n\\n4. Despite my follow-ups and your responses stating that the salary processing is underway, the dues have not been credited to my account.\\n\\nAs per the Code on Wages, 2019, including Section 17 and Section 45, unpaid wages are legally required to be paid, and claims may be pursued within the specified limitation period.\\n\\nI hereby demand that you clear my total unpaid salary of Rs 90,000 within [Number of Days, e.g., 15] days from the receipt of this letter by transferring the amount to my designated bank account.\\n\\nIf the payment is not made within the specified period, I may pursue available legal remedies, including approaching the State labour department or authority under the Code on Wages, 2019, and utilizing services under the Legal Services Authorities Act, 1987.\\n\\nEnclosures:\\n- Offer letter\\n- Payslips up to June\\n- Bank statements\\n- Emails with HR\\n\\nSincerely,\\n\\n[Sender's Full Name]\",\n  \"kb_ids_used\": [\n    \"WAGES-CODE-STATUS\",\n    \"WAGES-TIMELY-PAYMENT\",\n    \"WAGES-CLAIM-LIMITATION\",\n    \"WAGES-FORUM\",\n    \"FREE-LEGAL-AID\"\n  ],\n  \"notes_for_user\": [\n    \"Fill in all bracketed placeholders such as sender details, employer details, and the date.\",\n    \"Specify a reasonable number of days for the deadline (e.g., 15 days).\",\n    \"Verify the exact state-specific rules and forum details with the labour department if legal action becomes necessary.\"\n  ]\n}"
+      }
+    ]
+  },
+  "automated_heuristic_checks": {
+    "first turn asked follow-up questions (mode=ask)": true,
+    "guidance produced at some point": true,
+    "document generated": true,
+    "document has placeholders": true,
+    "document banner present": true,
+    "every shown citation comes from the KB": true,
+    "does not present repealed Payment of Wages Act as current (MANUAL: read the text)": false
+  }
+}

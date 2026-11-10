@@ -1,0 +1,477 @@
+{
+  "scenario": "T1_rental_security_deposit",
+  "ran_at": "2026-11-11 04:23:12",
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "turns": [
+    {
+      "user_input": "My landlord is refusing to return my ₹20,000 security deposit even though I vacated the apartment.",
+      "response": {
+        "case_id": "4f915010d57e4a2e86696cb11357a433",
+        "mode": "ask",
+        "reply": "I understand you have vacated your apartment, and your landlord is refusing to return your ₹20,000 security deposit. \n\nTo help you better, please answer these questions:\n1. Is there a written rental agreement, and what reason did the landlord give for not returning the money?\n2. When did you hand back the possession of the apartment?\n3. Which city and state is this property located in?",
+        "guidance": null,
+        "citations": [],
+        "wants_document": null,
+        "case": {
+          "id": "4f915010d57e4a2e86696cb11357a433",
+          "language": "en",
+          "category": "tenant",
+          "title": "Security Deposit Withheld by Landlord",
+          "summary": "The user states that their landlord is refusing to return their security deposit of ₹20,000 after they vacated the apartment.",
+          "slots": {},
+          "amount_inr": 20000,
+          "parties": [
+            {
+              "role": "tenant",
+              "name": null
+            },
+            {
+              "role": "landlord",
+              "name": null
+            }
+          ],
+          "timeline": [],
+          "evidence": [],
+          "facts_provided": [
+            "Landlord is refusing to return the security deposit",
+            "Security deposit amount is ₹20,000",
+            "User has vacated the apartment"
+          ],
+          "ai_interpretations": [
+            "May be a rental deposit dispute regarding the wrongful withholding of security money after vacating."
+          ],
+          "flags": [],
+          "followup_rounds": 1,
+          "guidance_done": false,
+          "missing_information": [
+            {
+              "key": "location",
+              "question": "Indian state and city where the dispute arose or where the user lives/works"
+            },
+            {
+              "key": "written_agreement",
+              "question": "Whether there is a written rental agreement (and any deposit/notice clauses)"
+            },
+            {
+              "key": "vacated_on",
+              "question": "Date the tenant vacated / handed back possession"
+            },
+            {
+              "key": "landlord_explanation",
+              "question": "What reason (if any) the landlord gave for withholding or deducting from the deposit"
+            },
+            {
+              "key": "proof_available",
+              "question": "Evidence available: payment receipts, bank transfers, messages, agreement, photos"
+            }
+          ],
+          "escalation": [],
+          "documents_available": [
+            "legal_notice",
+            "grievance_application",
+            "reply_to_notice"
+          ]
+        },
+        "flags_this_turn": []
+      },
+      "raw_llm_outputs": [
+        {
+          "step": "analyze",
+          "raw_llm_output": "{\n  \"category\": \"tenant\",\n  \"language\": \"en\",\n  \"title\": \"Security Deposit Withheld by Landlord\",\n  \"summary\": \"The user states that their landlord is refusing to return their security deposit of ₹20,000 after they vacated the apartment.\",\n  \"slots\": {\n    \"location\": null,\n    \"written_agreement\": null,\n    \"vacated_on\": null,\n    \"landlord_explanation\": null,\n    \"proof_available\": null\n  },\n  \"amount_inr\": 20000,\n  \"parties\": [\n    {\n      \"role\": \"tenant\",\n      \"name\": null\n    },\n    {\n      \"role\": \"landlord\",\n      \"name\": null\n    }\n  ],\n  \"timeline\": [],\n  \"evidence\": [],\n  \"facts_provided\": [\n    \"Landlord is refusing to return the security deposit\",\n    \"Security deposit amount is ₹20,000\",\n    \"User has vacated the apartment\"\n  ],\n  \"ai_interpretations\": [\n    \"May be a rental deposit dispute regarding the wrongful withholding of security money after vacating.\"\n  ],\n  \"cited_sections\": [],\n  \"wants_document\": null,\n  \"asks_for_guidance_now\": false\n}"
+        },
+        {
+          "step": "ask",
+          "raw_llm_output": "I understand you have vacated your apartment, and your landlord is refusing to return your ₹20,000 security deposit. \n\nTo help you better, please answer these questions:\n1. Is there a written rental agreement, and what reason did the landlord give for not returning the money?\n2. When did you hand back the possession of the apartment?\n3. Which city and state is this property located in?"
+        }
+      ]
+    },
+    {
+      "user_input": "Pune, Maharashtra. Yes there was a written 11-month agreement signed on 1 March 2025. I vacated on 30 April 2026 and handed over the keys. The landlord has given no reason, he just stopped answering my calls. I have the agreement, the bank transfer receipt for the deposit and WhatsApp chats.",
+      "response": {
+        "case_id": "4f915010d57e4a2e86696cb11357a433",
+        "mode": "guidance",
+        "reply": "The user states that their landlord in Pune, Maharashtra has withheld their security deposit of ₹20,000 after the user vacated the apartment on 30 April 2026, and is now ignoring phone calls. The user possesses the written 11-month agreement, bank transfer receipt, and WhatsApp chats as proof.\n\nI have prepared guidance based on what you shared. Open the Guidance tab to see your options, the verified legal references, and the documents I can draft. Please read the uncertainties section too.",
+        "guidance": {
+          "problem": "The user states that their landlord in Pune, Maharashtra has withheld their security deposit of ₹20,000 after the user vacated the apartment on 30 April 2026, and is now ignoring phone calls. The user possesses the written 11-month agreement, bank transfer receipt, and WhatsApp chats as proof.",
+          "rights": [
+            {
+              "text": "The terms of the written rental agreement and the relevant state rent law generally govern the rules regarding security deposits, including deductions and the timing of the return.",
+              "kind": "general_information",
+              "kb_ids": [
+                "TENANT-AGREEMENT-FIRST"
+              ],
+              "supported": true
+            },
+            {
+              "text": "A tenant may be able to approach a civil court to recover money that is owed by filing a civil suit.",
+              "kind": "general_information",
+              "kb_ids": [
+                "TENANT-CIVIL-REMEDY"
+              ],
+              "supported": true
+            }
+          ],
+          "remedies": [
+            {
+              "text": "Sending a written demand notice with a reasonable deadline is the customary step before initiating legal proceedings to document the dispute.",
+              "kind": "general_information",
+              "kb_ids": [
+                "TENANT-NOTICE-PRACTICE"
+              ],
+              "supported": true
+            },
+            {
+              "text": "Eligible persons may approach District Legal Services Authorities for free legal services, and disputes can potentially be settled through Lok Adalat or mediation.",
+              "kind": "general_information",
+              "kb_ids": [
+                "FREE-LEGAL-AID"
+              ],
+              "supported": true
+            }
+          ],
+          "next_steps": [
+            "Review the written rental agreement clauses concerning the deposit, notice periods, and refund conditions.",
+            "Draft and send a formal written demand notice to the landlord requesting the return of the security deposit.",
+            "Consult with a local advocate or the District Legal Services Authority in Pune to confirm the appropriate court, procedure, and limitation periods for recovering the deposit."
+          ],
+          "evidence_to_preserve": [
+            "Written 11-month rental agreement",
+            "Bank transfer receipt showing the payment of the security deposit",
+            "WhatsApp chats and call logs with the landlord"
+          ],
+          "uncertainties": [
+            "State-specific rent laws and local court procedures in Maharashtra need to be confirmed by an advocate.",
+            "The exact starting date for limitation and the correct legal procedure require professional confirmation.",
+            "Whether the Model Tenancy Act principles apply depends on state adoption."
+          ],
+          "advocate_recommended": true,
+          "advocate_reasons": [
+            "An advocate is needed to confirm court procedures, jurisdiction, and limitation periods for recovering money.",
+            "Legal guidance is helpful for drafting a formal demand notice and evaluating the specific clauses of the rental agreement."
+          ],
+          "advocate_reasons_system": [],
+          "citations": [
+            {
+              "id": "TENANT-AGREEMENT-FIRST",
+              "act": "Rental agreement and state rent law",
+              "section": null,
+              "title": "The agreement and your state's rent law decide the deposit rules",
+              "source_url": "https://www.indiacode.nic.in/",
+              "source_type": "official_portal",
+              "verification": "general_principle",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "State-specific. Ask the user's state and city."
+            },
+            {
+              "id": "TENANT-CIVIL-REMEDY",
+              "act": "Code of Civil Procedure, 1908; Limitation Act, 1963",
+              "section": null,
+              "title": "Civil suit to recover a withheld deposit",
+              "source_url": "https://ecourts.gov.in/",
+              "source_type": "official_portal",
+              "verification": "pending_section",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "Court, procedure and limitation start date need an advocate's confirmation."
+            },
+            {
+              "id": "TENANT-NOTICE-PRACTICE",
+              "act": "General practice",
+              "section": null,
+              "title": "A written demand notice is customary before suing",
+              "source_url": "https://www.indiacode.nic.in/",
+              "source_type": "official_portal",
+              "verification": "general_principle",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "Special rules apply if the other party is a government body."
+            },
+            {
+              "id": "FREE-LEGAL-AID",
+              "act": "Legal Services Authorities Act, 1987 (NALSA and State/District Legal Services Authorities)",
+              "section": null,
+              "title": "Free legal aid, Lok Adalat and mediation",
+              "source_url": "https://nalsa.gov.in/",
+              "source_type": "official_portal",
+              "verification": "general_principle",
+              "checked_on": "2026-11-08",
+              "jurisdiction_note": "Eligibility and process vary; confirm with the local authority."
+            }
+          ],
+          "removed_references": [],
+          "missing_information": [],
+          "disclaimer": "This AI Legal Assistant provides general legal information and assistance based on the information provided by the user. It is not a substitute for advice or representation from a qualified advocate in India. AI-generated responses may contain errors or omissions. Important legal decisions and documents should be reviewed by a qualified legal professional."
+        },
+        "citations": [],
+        "wants_document": null,
+        "case": {
+          "id": "4f915010d57e4a2e86696cb11357a433",
+          "language": "en",
+          "category": "tenant",
+          "title": "Security Deposit Withheld by Landlord",
+          "summary": "The user states that their landlord in Pune, Maharashtra is refusing to return their security deposit of ₹20,000 after they vacated the apartment on 30 April 2026. There was a written 11-month agreement, and the user has the agreement, bank transfer receipt, and WhatsApp chats as proof.",
+          "slots": {
+            "location": "Pune, Maharashtra",
+            "written_agreement": "Yes, written 11-month agreement signed on 1 March 2025",
+            "vacated_on": "30 April 2026",
+            "landlord_explanation": "No reason given, just stopped answering calls",
+            "proof_available": "Agreement, bank transfer receipt for the deposit, WhatsApp chats"
+          },
+          "amount_inr": 20000,
+          "parties": [
+            {
+              "role": "tenant",
+              "name": null
+            },
+            {
+              "role": "landlord",
+              "name": null
+            }
+          ],
+          "timeline": [
+            {
+              "date": "1 March 2025",
+              "event": "Written 11-month agreement signed"
+            },
+            {
+              "date": "30 April 2026",
+              "event": "User vacated the apartment and handed over the keys"
+            }
+          ],
+          "evidence": [
+            "Agreement",
+            "Bank transfer receipt for the deposit",
+            "WhatsApp chats"
+          ],
+          "facts_provided": [
+            "Landlord is refusing to return the security deposit",
+            "Security deposit amount is ₹20,000",
+            "User has vacated the apartment",
+            "Property located in Pune, Maharashtra",
+            "Written 11-month agreement signed on 1 March 2025",
+            "Vacated on 30 April 2026 and handed over the keys",
+            "Landlord gave no reason and stopped answering calls",
+            "Proof available includes agreement, bank transfer receipt, and WhatsApp chats"
+          ],
+          "ai_interpretations": [
+            "May be a rental deposit dispute regarding the wrongful withholding of security money after vacating."
+          ],
+          "flags": [],
+          "followup_rounds": 1,
+          "guidance_done": true,
+          "guidance": {
+            "problem": "The user states that their landlord in Pune, Maharashtra has withheld their security deposit of ₹20,000 after the user vacated the apartment on 30 April 2026, and is now ignoring phone calls. The user possesses the written 11-month agreement, bank transfer receipt, and WhatsApp chats as proof.",
+            "rights": [
+              {
+                "text": "The terms of the written rental agreement and the relevant state rent law generally govern the rules regarding security deposits, including deductions and the timing of the return.",
+                "kind": "general_information",
+                "kb_ids": [
+                  "TENANT-AGREEMENT-FIRST"
+                ],
+                "supported": true
+              },
+              {
+                "text": "A tenant may be able to approach a civil court to recover money that is owed by filing a civil suit.",
+                "kind": "general_information",
+                "kb_ids": [
+                  "TENANT-CIVIL-REMEDY"
+                ],
+                "supported": true
+              }
+            ],
+            "remedies": [
+              {
+                "text": "Sending a written demand notice with a reasonable deadline is the customary step before initiating legal proceedings to document the dispute.",
+                "kind": "general_information",
+                "kb_ids": [
+                  "TENANT-NOTICE-PRACTICE"
+                ],
+                "supported": true
+              },
+              {
+                "text": "Eligible persons may approach District Legal Services Authorities for free legal services, and disputes can potentially be settled through Lok Adalat or mediation.",
+                "kind": "general_information",
+                "kb_ids": [
+                  "FREE-LEGAL-AID"
+                ],
+                "supported": true
+              }
+            ],
+            "next_steps": [
+              "Review the written rental agreement clauses concerning the deposit, notice periods, and refund conditions.",
+              "Draft and send a formal written demand notice to the landlord requesting the return of the security deposit.",
+              "Consult with a local advocate or the District Legal Services Authority in Pune to confirm the appropriate court, procedure, and limitation periods for recovering the deposit."
+            ],
+            "evidence_to_preserve": [
+              "Written 11-month rental agreement",
+              "Bank transfer receipt showing the payment of the security deposit",
+              "WhatsApp chats and call logs with the landlord"
+            ],
+            "uncertainties": [
+              "State-specific rent laws and local court procedures in Maharashtra need to be confirmed by an advocate.",
+              "The exact starting date for limitation and the correct legal procedure require professional confirmation.",
+              "Whether the Model Tenancy Act principles apply depends on state adoption."
+            ],
+            "advocate_recommended": true,
+            "advocate_reasons": [
+              "An advocate is needed to confirm court procedures, jurisdiction, and limitation periods for recovering money.",
+              "Legal guidance is helpful for drafting a formal demand notice and evaluating the specific clauses of the rental agreement."
+            ],
+            "advocate_reasons_system": [],
+            "citations": [
+              {
+                "id": "TENANT-AGREEMENT-FIRST",
+                "act": "Rental agreement and state rent law",
+                "section": null,
+                "title": "The agreement and your state's rent law decide the deposit rules",
+                "source_url": "https://www.indiacode.nic.in/",
+                "source_type": "official_portal",
+                "verification": "general_principle",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "State-specific. Ask the user's state and city."
+              },
+              {
+                "id": "TENANT-CIVIL-REMEDY",
+                "act": "Code of Civil Procedure, 1908; Limitation Act, 1963",
+                "section": null,
+                "title": "Civil suit to recover a withheld deposit",
+                "source_url": "https://ecourts.gov.in/",
+                "source_type": "official_portal",
+                "verification": "pending_section",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "Court, procedure and limitation start date need an advocate's confirmation."
+              },
+              {
+                "id": "TENANT-NOTICE-PRACTICE",
+                "act": "General practice",
+                "section": null,
+                "title": "A written demand notice is customary before suing",
+                "source_url": "https://www.indiacode.nic.in/",
+                "source_type": "official_portal",
+                "verification": "general_principle",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "Special rules apply if the other party is a government body."
+              },
+              {
+                "id": "FREE-LEGAL-AID",
+                "act": "Legal Services Authorities Act, 1987 (NALSA and State/District Legal Services Authorities)",
+                "section": null,
+                "title": "Free legal aid, Lok Adalat and mediation",
+                "source_url": "https://nalsa.gov.in/",
+                "source_type": "official_portal",
+                "verification": "general_principle",
+                "checked_on": "2026-11-08",
+                "jurisdiction_note": "Eligibility and process vary; confirm with the local authority."
+              }
+            ],
+            "removed_references": [],
+            "missing_information": [],
+            "disclaimer": "This AI Legal Assistant provides general legal information and assistance based on the information provided by the user. It is not a substitute for advice or representation from a qualified advocate in India. AI-generated responses may contain errors or omissions. Important legal decisions and documents should be reviewed by a qualified legal professional."
+          },
+          "missing_information": [],
+          "escalation": [],
+          "documents_available": [
+            "legal_notice",
+            "grievance_application",
+            "reply_to_notice"
+          ]
+        },
+        "flags_this_turn": []
+      },
+      "raw_llm_outputs": [
+        {
+          "step": "analyze",
+          "raw_llm_output": "{\n  \"category\": \"tenant\",\n  \"language\": \"en\",\n  \"title\": \"Security Deposit Withheld by Landlord\",\n  \"summary\": \"The user states that their landlord in Pune, Maharashtra is refusing to return their security deposit of ₹20,000 after they vacated the apartment on 30 April 2026. There was a written 11-month agreement, and the user has the agreement, bank transfer receipt, and WhatsApp chats as proof.\",\n  \"slots\": {\n    \"location\": \"Pune, Maharashtra\",\n    \"written_agreement\": \"Yes, written 11-month agreement signed on 1 March 2025\",\n    \"vacated_on\": \"30 April 2026\",\n    \"landlord_explanation\": \"No reason given, just stopped answering calls\",\n    \"proof_available\": \"Agreement, bank transfer receipt for the deposit, WhatsApp chats\"\n  },\n  \"amount_inr\": 20000,\n  \"parties\": [\n    {\n      \"role\": \"tenant\",\n      \"name\": null\n    },\n    {\n      \"role\": \"landlord\",\n      \"name\": null\n    }\n  ],\n  \"timeline\": [\n    {\n      \"date\": \"1 March 2025\",\n      \"event\": \"Written 11-month agreement signed\"\n    },\n    {\n      \"date\": \"30 April 2026\",\n      \"event\": \"User vacated the apartment and handed over the keys\"\n    }\n  ],\n  \"evidence\": [\n    \"Agreement\",\n    \"Bank transfer receipt for the deposit\",\n    \"WhatsApp chats\"\n  ],\n  \"facts_provided\": [\n    \"Landlord is refusing to return the security deposit\",\n    \"Security deposit amount is ₹20,000\",\n    \"User has vacated the apartment\",\n    \"Property located in Pune, Maharashtra\",\n    \"Written 11-month agreement signed on 1 March 2025\",\n    \"Vacated on 30 April 2026 and handed over the keys\",\n    \"Landlord gave no reason and stopped answering calls\",\n    \"Proof available includes agreement, bank transfer receipt, and WhatsApp chats\"\n  ],\n  \"ai_interpretations\": [\n    \"May be a rental deposit dispute regarding the wrongful withholding of security money after vacating.\"\n  ],\n  \"cited_sections\": [],\n  \"wants_document\": null,\n  \"asks_for_guidance_now\": false\n}"
+        },
+        {
+          "step": "guidance",
+          "raw_llm_output": "{\n  \"problem\": \"The user states that their landlord in Pune, Maharashtra has withheld their security deposit of ₹20,000 after the user vacated the apartment on 30 April 2026, and is now ignoring phone calls. The user possesses the written 11-month agreement, bank transfer receipt, and WhatsApp chats as proof.\",\n  \"rights\": [\n    {\n      \"text\": \"The terms of the written rental agreement and the relevant state rent law generally govern the rules regarding security deposits, including deductions and the timing of the return.\",\n      \"kind\": \"general_information\",\n      \"kb_ids\": [\n        \"TENANT-AGREEMENT-FIRST\"\n      ]\n    },\n    {\n      \"text\": \"A tenant may be able to approach a civil court to recover money that is owed by filing a civil suit.\",\n      \"kind\": \"general_information\",\n      \"kb_ids\": [\n        \"TENANT-CIVIL-REMEDY\"\n      ]\n    }\n  ],\n  \"remedies\": [\n    {\n      \"text\": \"Sending a written demand notice with a reasonable deadline is the customary step before initiating legal proceedings to document the dispute.\",\n      \"kind\": \"general_information\",\n      \"kb_ids\": [\n        \"TENANT-NOTICE-PRACTICE\"\n      ]\n    },\n    {\n      \"text\": \"Eligible persons may approach District Legal Services Authorities for free legal services, and disputes can potentially be settled through Lok Adalat or mediation.\",\n      \"kind\": \"general_information\",\n      \"kb_ids\": [\n        \"FREE-LEGAL-AID\"\n      ]\n    }\n  ],\n  \"next_steps\": [\n    \"Review the written rental agreement clauses concerning the deposit, notice periods, and refund conditions.\",\n    \"Draft and send a formal written demand notice to the landlord requesting the return of the security deposit.\",\n    \"Consult with a local advocate or the District Legal Services Authority in Pune to confirm the appropriate court, procedure, and limitation periods for recovering the deposit.\"\n  ],\n  \"evidence_to_preserve\": [\n    \"Written 11-month rental agreement\",\n    \"Bank transfer receipt showing the payment of the security deposit\",\n    \"WhatsApp chats and call logs with the landlord\"\n  ],\n  \"uncertainties\": [\n    \"State-specific rent laws and local court procedures in Maharashtra need to be confirmed by an advocate.\",\n    \"The exact starting date for limitation and the correct legal procedure require professional confirmation.\",\n    \"Whether the Model Tenancy Act principles apply depends on state adoption.\"\n  ],\n  \"advocate_recommended\": true,\n  \"advocate_reasons\": [\n    \"An advocate is needed to confirm court procedures, jurisdiction, and limitation periods for recovering money.\",\n    \"Legal guidance is helpful for drafting a formal demand notice and evaluating the specific clauses of the rental agreement.\"\n  ]\n}"
+        }
+      ]
+    }
+  ],
+  "document": {
+    "result": {
+      "title": "Legal Notice Demanding Return of Rental Security Deposit",
+      "body": "[Sender's Name / Tenant's Full Name]\n[Sender's Address]\n\nDate: [Date of Notice]\n\nTo,\n[Landlord's Full Name]\n[Landlord's Address]\n\nSubject: Legal Notice for Return of Security Deposit of INR 20,000 for Property Located in Pune, Maharashtra\n\n1. That on 1 March 2025, a written 11-month agreement was signed between you ([Landlord's Full Name]) and me ([Sender's Name]) for the rental property located in Pune, Maharashtra.\n\n2. That pursuant to the said agreement, I paid a security deposit of ₹20,000 via bank transfer.\n\n3. That I completely vacated the apartment and handed over the keys to you on 30 April 2026.\n\n4. That despite the vacation of the premises and peaceful handing over of possession, you have failed and neglected to return the security deposit amount of ₹20,000, have given no reason for withholding the same, and have stopped answering my calls.\n\n5. That under the terms of our rental agreement and applicable legal principles, I am entitled to the immediate refund of the security deposit of ₹20,000 upon vacating the premises.\n\nI hereby demand that you return the full security deposit of ₹20,000 within [placeholder days] days from the receipt of this notice.\n\nIn the event of your failure to return the security deposit within the stipulated time, I reserve the right to pursue available legal remedies, including approaching the civil court or utilizing mechanisms such as District Legal Services Authority mediation, as permissible under law.\n\nEnclosures:\n1. Copy of the written 11-month agreement\n2. Bank transfer receipt for the deposit\n3. Copies of WhatsApp chats\n\nSincerely,\n\n[Sender's Name]\n[Sender's Contact Number]",
+      "banner": "AI-GENERATED DRAFT. Review carefully and have a qualified advocate check it before sending or filing. This draft has not been served, filed or accepted by any authority. Replace every [bracketed placeholder] with real information.",
+      "placeholders": [
+        "[Sender's Name / Tenant's Full Name]",
+        "[Sender's Address]",
+        "[Date of Notice]",
+        "[Landlord's Full Name]",
+        "[Landlord's Address]",
+        "[Sender's Name]",
+        "[placeholder days]",
+        "[Sender's Contact Number]"
+      ],
+      "notes_for_user": [
+        "Fill in the sender and landlord names and addresses in the bracketed placeholders.",
+        "Insert the number of days you want to give the landlord as a deadline in the [placeholder days] bracket.",
+        "Insert the current date and your contact number in the respective placeholders."
+      ],
+      "citations": [
+        {
+          "id": "TENANT-AGREEMENT-FIRST",
+          "act": "Rental agreement and state rent law",
+          "section": null,
+          "title": "The agreement and your state's rent law decide the deposit rules",
+          "source_url": "https://www.indiacode.nic.in/",
+          "source_type": "official_portal",
+          "verification": "general_principle",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "State-specific. Ask the user's state and city."
+        },
+        {
+          "id": "TENANT-NOTICE-PRACTICE",
+          "act": "General practice",
+          "section": null,
+          "title": "A written demand notice is customary before suing",
+          "source_url": "https://www.indiacode.nic.in/",
+          "source_type": "official_portal",
+          "verification": "general_principle",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "Special rules apply if the other party is a government body."
+        },
+        {
+          "id": "TENANT-CIVIL-REMEDY",
+          "act": "Code of Civil Procedure, 1908; Limitation Act, 1963",
+          "section": null,
+          "title": "Civil suit to recover a withheld deposit",
+          "source_url": "https://ecourts.gov.in/",
+          "source_type": "official_portal",
+          "verification": "pending_section",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "Court, procedure and limitation start date need an advocate's confirmation."
+        },
+        {
+          "id": "FREE-LEGAL-AID",
+          "act": "Legal Services Authorities Act, 1987 (NALSA and State/District Legal Services Authorities)",
+          "section": null,
+          "title": "Free legal aid, Lok Adalat and mediation",
+          "source_url": "https://nalsa.gov.in/",
+          "source_type": "official_portal",
+          "verification": "general_principle",
+          "checked_on": "2026-11-08",
+          "jurisdiction_note": "Eligibility and process vary; confirm with the local authority."
+        }
+      ],
+      "removed_references": [],
+      "language": "en",
+      "doc_type": "legal_notice"
+    },
+    "raw_llm_outputs": [
+      {
+        "step": "document",
+        "raw_llm_output": "{\n  \"title\": \"Legal Notice Demanding Return of Rental Security Deposit\",\n  \"body\": \"[Sender's Name / Tenant's Full Name]\\n[Sender's Address]\\n\\nDate: [Date of Notice]\\n\\nTo,\\n[Landlord's Full Name]\\n[Landlord's Address]\\n\\nSubject: Legal Notice for Return of Security Deposit of INR 20,000 for Property Located in Pune, Maharashtra\\n\\n1. That on 1 March 2025, a written 11-month agreement was signed between you ([Landlord's Full Name]) and me ([Sender's Name]) for the rental property located in Pune, Maharashtra.\\n\\n2. That pursuant to the said agreement, I paid a security deposit of ₹20,000 via bank transfer.\\n\\n3. That I completely vacated the apartment and handed over the keys to you on 30 April 2026.\\n\\n4. That despite the vacation of the premises and peaceful handing over of possession, you have failed and neglected to return the security deposit amount of ₹20,000, have given no reason for withholding the same, and have stopped answering my calls.\\n\\n5. That under the terms of our rental agreement and applicable legal principles, I am entitled to the immediate refund of the security deposit of ₹20,000 upon vacating the premises.\\n\\nI hereby demand that you return the full security deposit of ₹20,000 within [placeholder days] days from the receipt of this notice.\\n\\nIn the event of your failure to return the security deposit within the stipulated time, I reserve the right to pursue available legal remedies, including approaching the civil court or utilizing mechanisms such as District Legal Services Authority mediation, as permissible under law.\\n\\nEnclosures:\\n1. Copy of the written 11-month agreement\\n2. Bank transfer receipt for the deposit\\n3. Copies of WhatsApp chats\\n\\nSincerely,\\n\\n[Sender's Name]\\n[Sender's Contact Number]\",\n  \"kb_ids_used\": [\n    \"TENANT-AGREEMENT-FIRST\",\n    \"TENANT-NOTICE-PRACTICE\",\n    \"TENANT-CIVIL-REMEDY\",\n    \"FREE-LEGAL-AID\"\n  ],\n  \"notes_for_user\": [\n    \"Fill in the sender and landlord names and addresses in the bracketed placeholders.\",\n    \"Insert the number of days you want to give the landlord as a deadline in the [placeholder days] bracket.\",\n    \"Insert the current date and your contact number in the respective placeholders.\"\n  ]\n}"
+      }
+    ]
+  },
+  "automated_heuristic_checks": {
+    "first turn asked follow-up questions (mode=ask)": true,
+    "guidance produced at some point": true,
+    "document generated": true,
+    "document has placeholders": true,
+    "document banner present": true,
+    "every shown citation comes from the KB": true
+  }
+}

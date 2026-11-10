@@ -1,0 +1,67 @@
+{
+  "scenario": "T4_insufficient_information",
+  "ran_at": "2026-11-11 04:27:13",
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "turns": [
+    {
+      "user_input": "My company is treating me unfairly. Can I sue them?",
+      "response": {
+        "case_id": "c52dfa1b99ed4a63af040a925045f08d",
+        "mode": "ask",
+        "reply": "I understand you feel your company is treating you unfairly. \n\nTo help you figure out your options, please tell me:\n1. What exactly happened, and what outcome do you want?\n2. Which city and state in India is this happening in?\n3. Do you have any written proof, like emails or your employment agreement?",
+        "guidance": null,
+        "citations": [],
+        "wants_document": null,
+        "case": {
+          "id": "c52dfa1b99ed4a63af040a925045f08d",
+          "language": "en",
+          "category": "unclear",
+          "title": "Unspecified workplace issue",
+          "summary": "The user states that their company is treating them unfairly and asks if they can sue them, but no specific details about the grievance have been provided.",
+          "slots": {},
+          "amount_inr": null,
+          "parties": [
+            {
+              "role": "employee",
+              "name": null
+            },
+            {
+              "role": "employer",
+              "name": null
+            }
+          ],
+          "timeline": [],
+          "evidence": [],
+          "facts_provided": [
+            "The user states their company is treating them unfairly."
+          ],
+          "ai_interpretations": [
+            "May be an employment dispute, but details are too vague to classify definitively."
+          ],
+          "flags": [],
+          "followup_rounds": 1,
+          "guidance_done": false,
+          "missing_information": [],
+          "escalation": [],
+          "documents_available": []
+        },
+        "flags_this_turn": []
+      },
+      "raw_llm_outputs": [
+        {
+          "step": "analyze",
+          "raw_llm_output": "{\n  \"category\": \"unclear\",\n  \"language\": \"en\",\n  \"title\": \"Unspecified workplace issue\",\n  \"summary\": \"The user states that their company is treating them unfairly and asks if they can sue them, but no specific details about the grievance have been provided.\",\n  \"slots\": {},\n  \"amount_inr\": null,\n  \"parties\": [\n    {\n      \"role\": \"employee\",\n      \"name\": null\n    },\n    {\n      \"role\": \"employer\",\n      \"name\": null\n    }\n  ],\n  \"timeline\": [],\n  \"evidence\": [],\n  \"facts_provided\": [\n    \"The user states their company is treating them unfairly.\"\n  ],\n  \"ai_interpretations\": [\n    \"May be an employment dispute, but details are too vague to classify definitively.\"\n  ],\n  \"cited_sections\": [],\n  \"wants_document\": null,\n  \"asks_for_guidance_now\": false\n}"
+        },
+        {
+          "step": "ask",
+          "raw_llm_output": "I understand you feel your company is treating you unfairly. \n\nTo help you figure out your options, please tell me:\n1. What exactly happened, and what outcome do you want?\n2. Which city and state in India is this happening in?\n3. Do you have any written proof, like emails or your employment agreement?"
+        }
+      ]
+    }
+  ],
+  "document": null,
+  "automated_heuristic_checks": {
+    "no guidance, only questions": true
+  }
+}

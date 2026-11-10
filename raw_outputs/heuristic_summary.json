@@ -1,0 +1,10 @@
+{
+  "T7_bonus_hindi_deposit": {
+    "first turn asked follow-up questions (mode=ask)": true,
+    "guidance produced at some point": true,
+    "document generated": true,
+    "document has placeholders": true,
+    "document banner present": true,
+    "every shown citation comes from the KB": true
+  }
+}

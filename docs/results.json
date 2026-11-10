@@ -1,0 +1,19 @@
+{
+  "name": "[Your name]",
+  "roll_no": "[Roll no.]",
+  "branch": "[Branch]",
+  "repo_link": "[GitHub / hosted link]",
+  "model_used": "[exact provider and model name used for the test run, e.g. provider / model]",
+  "run_date": "[date you ran tests/run_scenarios.py]",
+  "scenarios": {
+    "T1 Rental deposit": null,
+    "T2 Online refund": null,
+    "T3 Unpaid salary": null,
+    "T4 Vague complaint": null,
+    "T5 Invented section": null,
+    "T6 Court notice": null,
+    "T7 Hindi deposit (bonus)": null
+  },
+  "biggest_failure_seen": null,
+  "_how_to_fill": "After running tests/run_scenarios.py and reading raw_outputs/, replace each null with ONE short honest sentence about what actually happened (include failures). Replace the bracketed fields. Then run: python docs/make_solution_pdf.py"
+}

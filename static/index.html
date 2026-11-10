@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nyaya Sahayak: plain-language legal help for India</title>
+<style>
+:root{--ink:#12231f;--ink2:#4a5c56;--paper:#f2f5f3;--card:#fff;--line:#cbd6d1;--accent:#0e6b5c;--accent-d:#0a4f44;--warn:#a8620a;--warn-bg:#fbf1e2;--seal:#a32a2a;--seal-bg:#fbeaea;--ok-bg:#e4f2ee;
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:system-ui,-apple-system,"Segoe UI","Noto Sans Devanagari","Nirmala UI",Roboto,sans-serif}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700}h2{font-size:1.35rem}h3{font-size:1.05rem}
+a{color:var(--accent-d)}button,select,textarea,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #1b8f7c;outline-offset:2px}
+.top{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;display:flex;align-items:center;gap:12px;padding:10px 16px}
+.top b{font-family:var(--serif);font-size:1.15rem;margin-right:auto}
+.top select,.top button{background:#1d352f;color:#fff;border:1px solid #3b5a52;border-radius:6px;padding:6px 10px;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:6px;padding:12px 20px;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--accent-d)}.btn[disabled]{opacity:.55;cursor:not-allowed}
+.btn.alt{background:transparent;color:var(--accent-d);border:1.5px solid var(--accent)}
+.btn.sm{padding:7px 12px;font-size:.9rem}
+/* landing */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;padding:34px 0}
+.hero p.lead{font-size:1.15rem;color:var(--ink2);max-width:34em}
+.casefile{background:var(--card);border:1.5px solid var(--ink);border-radius:4px;box-shadow:6px 6px 0 var(--ink);padding:0}
+.casefile header{background:var(--ink);color:#fff;padding:8px 14px;font-size:.85rem}
+.cf-row{display:grid;grid-template-columns:110px 1fr;border-top:1px solid var(--line)}
+.cf-row>div{padding:10px 14px;font-size:.92rem}.cf-row>div:first-child{font-weight:600;border-right:1px solid var(--line)}
+.cf-said{background:var(--ok-bg)}.cf-miss{background:var(--warn-bg)}.cf-ai{background:#eef0f6}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 26px}
+.cat{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);padding:14px 16px;border-radius:4px}
+.notice{background:var(--warn-bg);border:1px solid #e3c590;border-radius:6px;padding:14px 16px;font-size:.92rem;margin:12px 0}
+/* app */
+.app{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px;align-items:start}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;min-height:540px}
+.pane>.hd{padding:10px 14px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chat{height:min(62vh,560px);overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:92%;padding:10px 13px;border-radius:8px;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.user{align-self:flex-end;background:var(--accent);color:#fff}
+.msg.bot{align-self:flex-start;background:#eef2f0;border:1px solid var(--line)}
+.msg.bot.urgent{background:var(--seal-bg);border-color:#e1a5a5}
+.msg.sys{align-self:center;color:var(--ink2);font-size:.88rem;text-align:center}
+.composer{border-top:1px solid var(--line);padding:10px;display:grid;grid-template-columns:1fr auto;gap:8px}
+.composer textarea{resize:vertical;min-height:62px;max-height:180px;border:1px solid var(--line);border-radius:6px;padding:9px}
+.composer .row{display:flex;flex-direction:column;gap:6px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);padding:0 8px;background:#f7f9f8}
+.tab{background:none;border:0;padding:11px 14px;cursor:pointer;border-bottom:3px solid transparent;font-weight:600;color:var(--ink2)}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+.panel{padding:16px;overflow:auto;max-height:min(72vh,680px)}
+.empty{color:var(--ink2);padding:18px;border:1.5px dashed var(--line);border-radius:6px}
+.sec{margin:0 0 20px}.sec h3{border-bottom:2px solid var(--line);padding-bottom:4px}
+.badge{display:inline-block;font-size:.74rem;padding:1px 7px;border-radius:10px;border:1px solid var(--line);margin-left:6px;vertical-align:middle;background:#fff}
+.b-gen{background:#e9eef6}.b-int{background:#f3ecfa}.b-case{background:var(--ok-bg)}.b-unsup{background:var(--warn-bg);border-color:#e3c590}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:4px 10px;font-size:.93rem}.kv dt{color:var(--ink2)}.kv dd{margin:0}
+ul.plain{margin:.3em 0;padding-left:1.2em}li{margin:.25em 0}
+.said{background:var(--ok-bg);border-left:4px solid var(--accent);padding:8px 12px;border-radius:3px}
+.miss{background:var(--warn-bg);border-left:4px solid var(--warn);padding:8px 12px;border-radius:3px}
+.aiint{background:#eef0f6;border-left:4px solid #5b6aa6;padding:8px 12px;border-radius:3px}
+.esc{background:var(--seal-bg);border:1.5px solid var(--seal);border-radius:6px;padding:12px 14px}
+.esc h3{color:var(--seal);border:0;margin:0 0 4px}
+.ref{border:1px solid var(--line);border-radius:5px;padding:9px 12px;margin:8px 0;font-size:.92rem;background:#fafcfb}
+.tl{border-left:3px solid var(--accent);margin-left:6px;padding-left:14px}.tl div{margin:6px 0}
+textarea.doc{width:100%;min-height:340px;border:1px solid var(--line);border-radius:6px;padding:12px;font:15px/1.5 var(--sans)}
+.row2{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.row2 select{padding:8px;border:1px solid var(--line);border-radius:6px;background:#fff}
+.err{color:var(--seal);background:var(--seal-bg);padding:8px 12px;border-radius:5px;margin:8px 0}
+footer{color:var(--ink2);font-size:.85rem;padding:20px 16px 40px;max-width:1180px;margin:0 auto}
+.mobile-tabs{display:none}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.cats{grid-template-columns:1fr}.app{grid-template-columns:1fr}
+.chat{height:55vh}.kv{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:no-preference){.msg{animation:in .18s ease-out}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
+.dots span{display:inline-block;width:6px;height:6px;margin:0 2px;background:var(--ink2);border-radius:50%}
+@media print{body{background:#fff}.top,footer{display:none}}
+</style>
+</head>
+<body>
+<div class="top">
+  <b>Nyaya Sahayak</b>
+  <label for="lang" class="sr" style="position:absolute;left:-9999px">Language</label>
+  <select id="lang" aria-label="Language"><option value="auto">Auto / स्वतः</option><option value="en">English</option><option value="hi">हिन्दी</option></select>
+  <button id="homeBtn" type="button"></button>
+</div>
+
+<main id="landing" class="wrap">
+  <section class="hero">
+    <div>
+      <h1 id="h1"></h1>
+      <p class="lead" id="lead"></p>
+      <p><button class="btn" id="startBtn" type="button"></button></p>
+      <div class="notice" id="landNotice"></div>
+    </div>
+    <div class="casefile" aria-label="Example of a case file">
+      <header id="cfHead"></header>
+      <div class="cf-row cf-said"><div id="cf1a"></div><div id="cf1b"></div></div>
+      <div class="cf-row cf-miss"><div id="cf2a"></div><div id="cf2b"></div></div>
+      <div class="cf-row cf-ai"><div id="cf3a"></div><div id="cf3b"></div></div>
+    </div>
+  </section>
+  <h2 id="catH"></h2>
+  <div class="cats" id="cats"></div>
+  <div class="notice" id="privNotice"></div>
+</main>
+
+<main id="app" class="wrap" hidden>
+  <div class="app">
+    <section class="pane" aria-label="Conversation">
+      <div class="hd"><strong id="chatH"></strong><span id="catBadge" class="badge"></span>
+        <span style="margin-left:auto"></span>
+        <button class="btn alt sm" id="forceBtn" type="button"></button>
+        <button class="btn alt sm" id="delBtn" type="button"></button></div>
+      <div class="chat" id="chat" role="log" aria-live="polite"></div>
+      <form class="composer" id="form">
+        <textarea id="msg" aria-label="Your message" maxlength="3000"></textarea>
+        <div class="row"><button class="btn" id="sendBtn" type="submit"></button>
+          <button class="btn alt sm" id="micBtn" type="button" hidden></button></div>
+      </form>
+    </section>
+    <section class="pane" aria-label="Case workspace">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="t-case" aria-selected="true" data-p="case"></button>
+        <button class="tab" role="tab" id="t-guid" aria-selected="false" data-p="guid"></button>
+        <button class="tab" role="tab" id="t-docs" aria-selected="false" data-p="docs"></button>
+      </div>
+      <div class="panel" id="p-case" role="tabpanel"></div>
+      <div class="panel" id="p-guid" role="tabpanel" hidden></div>
+      <div class="panel" id="p-docs" role="tabpanel" hidden></div>
+    </section>
+  </div>
+  <div class="notice" id="disc" style="margin-top:16px"></div>
+</main>
+<footer id="foot"></footer>
+
+<script>
+const S = {caseId: sessionStorage.getItem('caseId'), cfg: null, busy: false, data: null, guidance: null, doc: null};
+const $ = id => document.getElementById(id);
+function el(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) { if (k === 'class') e.className = v; else if (v !== null && v !== undefined) e.setAttribute(k, v); }
+  for (const c of kids.flat()) if (c !== null && c !== undefined && c !== false) e.append(c.nodeType ? c : document.createTextNode(String(c)));
+  return e;
+}
+const T = {
+ en: {home:'Home', start:'Start your legal consultation', h1:'Know where you stand before you decide to pay a lawyer.',
+  lead:'Describe a rent deposit, refund or salary problem in your own words, in English or Hindi. You get a structured case file, verified legal references, plain-language options and a draft letter you can edit.',
+  note:'This is general legal information, not a lawyer. It is built to say "I could not verify that" rather than guess, and to tell you when you need an advocate.',
+  cfHead:'Example case file (illustrative)', cf:['You said','Rs 20,000 deposit; moved out 30 April; landlord not replying','Still missing','City and state; whether the agreement has a deduction clause','AI\'s reading','Possible deposit recovery dispute. Needs your state\'s rent law check'],
+  catH:'What it can help with today', cats:[['Rent and deposits','Security deposit not returned, unexplained deductions, agreement disputes.'],['Consumer refunds','Defective products, online shopping refunds, service complaints.'],['Unpaid salary','Unpaid or delayed pay after leaving or while employed, deductions.']],
+  chat:'Your conversation', ph:'Describe what happened. You can speak instead using the microphone button.', send:'Send', mic:'Speak', listening:'Listening…',
+  force:'Get guidance now', del:'Delete this case', delC:'Delete this case and its messages from this app?', welcome:'Tell me what happened, in your own words. I will ask a few questions, then build your case file. I am an AI, not a lawyer.',
+  tCase:'Case file', tGuid:'Guidance', tDocs:'Documents', thinking:'Thinking',
+  emptyCase:'Your case file will build here as you describe the problem.', emptyGuid:'Guidance appears once I have enough facts, or when you press "Get guidance now".',
+  you:'What you told me', missing:'Still missing', ai:'My readings (possible, not verified facts)', timeline:'Timeline', parties:'Parties', evidence:'Evidence you have', category:'Category', location:'Location', amount:'Amount', summary:'Summary',
+  cats2:{tenant:'Rent / deposit',consumer:'Consumer',employment:'Salary / employment',out_of_scope:'Outside scope',unclear:'Not yet clear'},
+  problem:'What the problem appears to be', rights:'Rights and protections that may apply', remedies:'Possible remedies', steps:'Practical next steps', keep:'Keep these as evidence', unc:'What is uncertain', refs:'Verified references', adv:'Speak to a qualified advocate', advNo:'Consider an advocate if the other side refuses or the amount grows.',
+  kinds:{general_information:'General information',interpretation:'Interpretation',case_specific:'Based on your facts'}, unsup:'No verified source entry backs this point',
+  verif:{verified:'Verified in statute text',secondary_verified:'Confirmed in secondary sources; check official page',single_secondary:'Single secondary source; provisional',general_principle:'General principle; no section claimed',pending_section:'Section number not verified, so none is shown'},
+  src:'Official source', checked:'Checked', secNone:'section not cited', removed:'References the system removed because they could not be verified:',
+  docHead:'Draft a document', docType:'Document type', docLang:'Language', gen:'Generate draft', docEmpty:'Choose a document type once your case category is clear.', docEdit:'Edit before downloading', dlTxt:'Download .txt', dlPdf:'Save as PDF', copy:'Copy', ph2:'Placeholders to fill in', notes:'Check before sending',
+  dnames:{legal_notice:'Legal notice (deposit)',consumer_complaint:'Consumer complaint',refund_request:'Refund request',salary_demand:'Salary demand letter',reply_to_notice:'Reply to a notice',grievance_application:'Grievance application'},
+  errNet:'Could not reach the server.', noKey:'The AI is not configured yet. The person running this app must set LLM_API_KEY (see README).'},
+ hi: {home:'होम', start:'अपनी कानूनी सलाह शुरू करें', h1:'वकील पर खर्च करने से पहले जानिए कि आप कहाँ खड़े हैं।',
+  lead:'किराये की जमा राशि, रिफंड या वेतन की समस्या अपने शब्दों में हिंदी या अंग्रेज़ी में बताइए। आपको केस फ़ाइल, सत्यापित कानूनी संदर्भ, सरल भाषा में विकल्प और संपादन योग्य पत्र का मसौदा मिलेगा।',
+  note:'यह सामान्य कानूनी जानकारी है, वकील नहीं। इसे अनुमान लगाने के बजाय "मैं यह सत्यापित नहीं कर सका" कहने और ज़रूरत पड़ने पर अधिवक्ता से मिलने की सलाह देने के लिए बनाया गया है।',
+  cfHead:'उदाहरण केस फ़ाइल (उदाहरण मात्र)', cf:['आपने बताया','20,000 रुपये की जमा राशि; 30 अप्रैल को घर खाली किया; मकान मालिक जवाब नहीं दे रहा','अभी कमी','शहर और राज्य; एग्रीमेंट में कटौती की शर्त है या नहीं','AI की समझ','संभवतः जमा राशि वसूली का विवाद। आपके राज्य का किराया कानून जाँचना होगा'],
+  catH:'आज यह किसमें मदद कर सकता है', cats:[['किराया और जमा राशि','जमा राशि वापस न मिलना, बिना कारण कटौती, एग्रीमेंट विवाद।'],['उपभोक्ता रिफंड','खराब सामान, ऑनलाइन खरीद का रिफंड, सेवा शिकायतें।'],['बकाया वेतन','नौकरी छोड़ने के बाद या नौकरी में रहते बकाया/देर से वेतन, कटौती।']],
+  chat:'आपकी बातचीत', ph:'क्या हुआ बताइए। आप माइक्रोफ़ोन बटन से बोल भी सकते हैं।', send:'भेजें', mic:'बोलें', listening:'सुन रहा हूँ…',
+  force:'अभी मार्गदर्शन दें', del:'यह केस हटाएँ', delC:'क्या इस केस और इसके संदेशों को इस ऐप से हटाएँ?', welcome:'क्या हुआ, अपने शब्दों में बताइए। मैं कुछ सवाल पूछूँगा, फिर आपकी केस फ़ाइल बनाऊँगा। मैं AI हूँ, वकील नहीं।',
+  tCase:'केस फ़ाइल', tGuid:'मार्गदर्शन', tDocs:'दस्तावेज़', thinking:'सोच रहा हूँ',
+  emptyCase:'जैसे-जैसे आप समस्या बताएँगे, आपकी केस फ़ाइल यहाँ बनेगी।', emptyGuid:'पर्याप्त तथ्य मिलने पर, या "अभी मार्गदर्शन दें" दबाने पर, मार्गदर्शन यहाँ दिखेगा।',
+  you:'आपने जो बताया', missing:'अभी कमी', ai:'मेरी समझ (संभावित, सत्यापित तथ्य नहीं)', timeline:'घटनाक्रम', parties:'पक्ष', evidence:'आपके पास सबूत', category:'श्रेणी', location:'स्थान', amount:'राशि', summary:'सारांश',
+  cats2:{tenant:'किराया / जमा राशि',consumer:'उपभोक्ता',employment:'वेतन / रोज़गार',out_of_scope:'दायरे से बाहर',unclear:'अभी स्पष्ट नहीं'},
+  problem:'समस्या क्या लगती है', rights:'लागू हो सकने वाले अधिकार और सुरक्षा', remedies:'संभावित उपाय', steps:'व्यावहारिक अगले कदम', keep:'इन्हें सबूत के रूप में संभालकर रखें', unc:'क्या अनिश्चित है', refs:'सत्यापित संदर्भ', adv:'योग्य अधिवक्ता से बात करें', advNo:'यदि दूसरा पक्ष मना करे या राशि बढ़े तो अधिवक्ता पर विचार करें।',
+  kinds:{general_information:'सामान्य जानकारी',interpretation:'व्याख्या',case_specific:'आपके तथ्यों पर आधारित'}, unsup:'इस बिंदु के लिए कोई सत्यापित स्रोत प्रविष्टि नहीं है',
+  verif:{verified:'कानून के पाठ में सत्यापित',secondary_verified:'द्वितीयक स्रोतों में पुष्ट; आधिकारिक पेज जाँचें',single_secondary:'एक द्वितीयक स्रोत; अस्थायी',general_principle:'सामान्य सिद्धांत; कोई धारा नहीं बताई',pending_section:'धारा संख्या सत्यापित नहीं, इसलिए नहीं दिखाई गई'},
+  src:'आधिकारिक स्रोत', checked:'जाँचा गया', secNone:'धारा नहीं दी गई', removed:'सिस्टम ने ये संदर्भ हटाए क्योंकि इन्हें सत्यापित नहीं किया जा सका:',
+  docHead:'दस्तावेज़ का मसौदा बनाएँ', docType:'दस्तावेज़ का प्रकार', docLang:'भाषा', gen:'मसौदा बनाएँ', docEmpty:'केस की श्रेणी स्पष्ट होने पर दस्तावेज़ का प्रकार चुनें।', docEdit:'डाउनलोड से पहले संपादित करें', dlTxt:'.txt डाउनलोड', dlPdf:'PDF के रूप में सहेजें', copy:'कॉपी', ph2:'भरने के लिए स्थान', notes:'भेजने से पहले जाँचें',
+  dnames:{legal_notice:'कानूनी नोटिस (जमा राशि)',consumer_complaint:'उपभोक्ता शिकायत',refund_request:'रिफंड अनुरोध',salary_demand:'वेतन माँग पत्र',reply_to_notice:'नोटिस का उत्तर',grievance_application:'शिकायत आवेदन'},
+  errNet:'सर्वर से संपर्क नहीं हो सका।', noKey:'AI अभी कॉन्फ़िगर नहीं है। इस ऐप को चलाने वाले को LLM_API_KEY सेट करनी होगी (README देखें)।'}
+};
+const uiLang = () => { const v = $('lang').value; return v === 'hi' ? 'hi' : (v === 'en' ? 'en' : (S.data && S.data.language === 'hi' ? 'hi' : 'en')); };
+const t = () => T[uiLang()];
+
+function applyStatic() {
+  const x = t(); document.documentElement.lang = uiLang();
+  $('homeBtn').textContent = x.home; $('startBtn').textContent = x.start; $('h1').textContent = x.h1; $('lead').textContent = x.lead;
+  $('landNotice').textContent = x.note; $('cfHead').textContent = x.cfHead;
+  ['cf1a','cf1b','cf2a','cf2b','cf3a','cf3b'].forEach((id, i) => $(id).textContent = x.cf[i]);
+  $('catH').textContent = x.catH; $('cats').replaceChildren(...x.cats.map(c => el('div', {class:'cat'}, el('h3', {}, c[0]), el('div', {}, c[1]))));
+  $('chatH').textContent = x.chat; $('msg').placeholder = x.ph; $('sendBtn').textContent = x.send; $('micBtn').textContent = x.mic;
+  $('forceBtn').textContent = x.force; $('delBtn').textContent = x.del;
+  $('t-case').textContent = x.tCase; $('t-guid').textContent = x.tGuid; $('t-docs').textContent = x.tDocs;
+  if (S.cfg) { const l = uiLang(); $('disc').textContent = S.cfg.disclaimer[l] + ' ' + S.cfg.privacy[l]; $('privNotice').textContent = S.cfg.disclaimer[l] + ' ' + S.cfg.privacy[l]; $('foot').textContent = S.cfg.disclaimer[l]; }
+  renderCase(); renderGuidance(); renderDocs();
+}
+
+function show(app) { $('landing').hidden = app; $('app').hidden = !app; window.scrollTo(0, 0); }
+function bubble(cls, text) { const m = el('div', {class: 'msg ' + cls}, text); $('chat').append(m); $('chat').scrollTop = 1e9; return m; }
+
+function tab(p) {
+  for (const k of ['case', 'guid', 'docs']) { $('p-' + k).hidden = k !== p; $('t-' + k).setAttribute('aria-selected', k === p); }
+}
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => tab(b.dataset.p)));
+
+async function api(path, opts) {
+  let r; try { r = await fetch(path, opts); } catch { throw new Error(t().errNet); }
+  const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || ('HTTP ' + r.status)); return j;
+}
+
+async function send(text, force) {
+  if (S.busy || !text.trim()) return;
+  if (S.cfg && !S.cfg.llm_configured) { bubble('sys', t().noKey); return; }
+  S.busy = true; $('sendBtn').disabled = $('forceBtn').disabled = true;
+  bubble('user', text); $('msg').value = '';
+  const wait = bubble('bot', t().thinking + '…');
+  try {
+    const j = await api('/api/chat', {method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({case_id: S.caseId, message: text, language: $('lang').value, force_guidance: !!force})});
+    S.caseId = j.case_id; sessionStorage.setItem('caseId', S.caseId); S.data = j.case;
+    wait.textContent = j.reply; if (['urgent', 'emergency', 'out_of_scope'].includes(j.mode)) wait.classList.add('urgent');
+    if (j.guidance) { S.guidance = j.guidance; tab('guid'); }
+    if (j.mode === 'citation_check') S.extraCites = j.citations; else S.extraCites = null;
+    applyStatic(); if (j.guidance) tab('guid');
+  } catch (e) { wait.remove(); bubble('sys', '⚠ ' + e.message); }
+  S.busy = false; $('sendBtn').disabled = $('forceBtn').disabled = false; $('msg').focus();
+}
+
+function list(items, cls) { return items && items.length ? el('ul', {class: 'plain ' + (cls || '')}, items.map(i => el('li', {}, typeof i === 'string' ? i : JSON.stringify(i)))) : null; }
+
+function renderCase() {
+  const p = $('p-case'), c = S.data, x = t();
+  if (!c || !c.summary) { p.replaceChildren(el('div', {class: 'empty'}, x.emptyCase)); return; }
+  $('catBadge').textContent = x.cats2[c.category] || c.category;
+  const miss = c.missing_information || [];
+  const kids = [
+    el('div', {class: 'sec'}, el('h2', {}, c.title || x.tCase), el('p', {}, c.summary),
+      el('dl', {class: 'kv'}, el('dt', {}, x.category), el('dd', {}, x.cats2[c.category] || c.category),
+        el('dt', {}, x.location), el('dd', {}, (c.slots && c.slots.location) || '-'),
+        el('dt', {}, x.amount), el('dd', {}, c.amount_inr != null ? 'Rs ' + Number(c.amount_inr).toLocaleString('en-IN') : '-'))),
+  ];
+  if ((c.escalation || []).length) kids.push(el('div', {class: 'esc sec'}, el('h3', {}, x.adv), list(c.escalation.map(e => e.reason))));
+  if ((c.parties || []).length) kids.push(el('div', {class: 'sec'}, el('h3', {}, x.parties), list(c.parties.map(q => q.role + (q.name ? ': ' + q.name : '')))));
+  if ((c.timeline || []).length) kids.push(el('div', {class: 'sec'}, el('h3', {}, x.timeline), el('div', {class: 'tl'}, c.timeline.map(e => el('div', {}, el('b', {}, e.date || '?'), ' ', e.event)))));
+  if ((c.facts_provided || []).length) kids.push(el('div', {class: 'sec'}, el('h3', {}, x.you), el('div', {class: 'said'}, list(c.facts_provided))));
+  if ((c.evidence || []).length) kids.push(el('div', {class: 'sec'}, el('h3', {}, x.evidence), list(c.evidence)));
+  if (miss.length) kids.push(el('div', {class: 'sec'}, el('h3', {}, x.missing), el('div', {class: 'miss'}, list(miss.map(m => m.question)))));
+  if ((c.ai_interpretations || []).length) kids.push(el('div', {class: 'sec'}, el('h3', {}, x.ai), el('div', {class: 'aiint'}, list(c.ai_interpretations))));
+  p.replaceChildren(...kids);
+}
+
+function refCard(r) {
+  const x = t();
+  return el('div', {class: 'ref'}, el('b', {}, r.act), r.section ? ', Section ' + r.section : ' (' + x.secNone + ')', el('br'), r.title,
+    el('div', {}, el('span', {class: 'badge'}, x.verif[r.verification] || r.verification), ' ', x.checked + ' ' + r.checked_on),
+    r.jurisdiction_note ? el('div', {}, r.jurisdiction_note) : null,
+    el('a', {href: r.source_url, target: '_blank', rel: 'noopener noreferrer'}, x.src + ': ' + r.source_url));
+}
+
+function itemsBlock(items) {
+  const x = t();
+  return el('ul', {class: 'plain'}, (items || []).map(i => el('li', {}, i.text,
+    el('span', {class: 'badge ' + ({general_information: 'b-gen', interpretation: 'b-int', case_specific: 'b-case'}[i.kind] || '')}, x.kinds[i.kind] || i.kind),
+    i.supported === false ? el('span', {class: 'badge b-unsup'}, x.unsup) : null,
+    (i.kb_ids || []).length ? el('span', {class: 'badge'}, i.kb_ids.join(', ')) : null)));
+}
+
+function renderGuidance() {
+  const p = $('p-guid'), g = S.guidance, x = t();
+  if (!g) {
+    const kids = [el('div', {class: 'empty'}, x.emptyGuid)];
+    (S.extraCites || []).forEach(r => kids.push(refCard(r)));
+    p.replaceChildren(...kids); return;
+  }
+  const esc = g.advocate_recommended
+    ? el('div', {class: 'esc sec'}, el('h3', {}, x.adv), list([...(g.advocate_reasons || []), ...(g.advocate_reasons_system || []).map(r => r.reason)]))
+    : el('div', {class: 'sec'}, x.advNo);
+  p.replaceChildren(esc,
+    el('div', {class: 'sec'}, el('h3', {}, x.problem), el('p', {}, g.problem)),
+    el('div', {class: 'sec'}, el('h3', {}, x.rights), itemsBlock(g.rights)),
+    el('div', {class: 'sec'}, el('h3', {}, x.remedies), itemsBlock(g.remedies)),
+    el('div', {class: 'sec'}, el('h3', {}, x.steps), list(g.next_steps)),
+    el('div', {class: 'sec'}, el('h3', {}, x.keep), list(g.evidence_to_preserve)),
+    el('div', {class: 'sec'}, el('h3', {}, x.unc), el('div', {class: 'miss'}, list([...(g.uncertainties || []), ...(g.missing_information || [])]))),
+    el('div', {class: 'sec'}, el('h3', {}, x.refs), ...(g.citations || []).map(refCard)),
+    (g.removed_references || []).length ? el('div', {class: 'err'}, x.removed + ' ' + g.removed_references.join('; ')) : null,
+    el('div', {class: 'notice'}, g.disclaimer));
+}
+
+function renderDocs() {
+  const p = $('p-docs'), c = S.data, x = t();
+  const types = (c && c.documents_available) || [];
+  if (!types.length) { p.replaceChildren(el('div', {class: 'empty'}, x.docEmpty)); return; }
+  const sel = el('select', {id: 'docType', 'aria-label': x.docType}, types.map(k => el('option', {value: k}, x.dnames[k] || k)));
+  const lsel = el('select', {id: 'docLang', 'aria-label': x.docLang}, el('option', {value: 'en'}, 'English'), el('option', {value: 'hi'}, 'हिन्दी'));
+  lsel.value = uiLang();
+  const out = el('div', {id: 'docOut'});
+  const gen = el('button', {class: 'btn', type: 'button'}, x.gen);
+  gen.addEventListener('click', async () => {
+    if (S.busy) return; S.busy = true; gen.disabled = true; out.replaceChildren(el('div', {class: 'empty'}, t().thinking + '…'));
+    try { S.doc = await api('/api/document', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({case_id: S.caseId, doc_type: sel.value, language: lsel.value})}); drawDoc(out); }
+    catch (e) { out.replaceChildren(el('div', {class: 'err'}, e.message)); }
+    S.busy = false; gen.disabled = false;
+  });
+  p.replaceChildren(el('h3', {}, x.docHead), el('div', {class: 'row2'}, sel, lsel, gen), out);
+  if (S.doc) drawDoc(out);
+}
+
+function fullText() { return S.doc.banner + '\n\n' + $('docBody').value; }
+function drawDoc(out) {
+  const x = t(), d = S.doc;
+  const ta = el('textarea', {class: 'doc', id: 'docBody', 'aria-label': x.docEdit}); ta.value = d.body;
+  const dl = el('button', {class: 'btn alt sm', type: 'button'}, x.dlTxt);
+  dl.addEventListener('click', () => { const a = el('a', {href: URL.createObjectURL(new Blob([fullText()], {type: 'text/plain;charset=utf-8'})), download: (d.doc_type || 'draft') + '.txt'}); a.click(); });
+  const pdf = el('button', {class: 'btn alt sm', type: 'button'}, x.dlPdf);
+  pdf.addEventListener('click', () => {
+    const w = window.open('', '_blank'); if (!w) return;
+    const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    w.document.write('<!doctype html><meta charset="utf-8"><title>' + esc(d.title) + '</title><style>body{font:14pt/1.5 "Noto Sans Devanagari","Nirmala UI",Georgia,serif;margin:2cm}pre{white-space:pre-wrap;font:inherit}.b{border:1.5px solid #a32a2a;padding:8px;margin-bottom:16px;font:11pt sans-serif}</style><div class="b">' + esc(d.banner) + '</div><pre>' + esc($('docBody').value) + '</pre>');
+    w.document.close(); w.focus(); setTimeout(() => w.print(), 300);
+  });
+  const cp = el('button', {class: 'btn alt sm', type: 'button'}, x.copy);
+  cp.addEventListener('click', () => navigator.clipboard && navigator.clipboard.writeText(fullText()));
+  out.replaceChildren(el('div', {class: 'esc'}, d.banner), el('h3', {style: 'margin-top:12px'}, d.title), ta,
+    el('div', {class: 'row2'}, dl, pdf, cp),
+    d.placeholders.length ? el('div', {class: 'miss'}, el('b', {}, x.ph2), list(d.placeholders)) : null,
+    d.notes_for_user.length ? el('div', {class: 'sec', style: 'margin-top:10px'}, el('h3', {}, x.notes), list(d.notes_for_user)) : null,
+    d.citations.length ? el('div', {class: 'sec'}, el('h3', {}, x.refs), ...d.citations.map(refCard)) : null,
+    d.removed_references.length ? el('div', {class: 'err'}, x.removed + ' ' + d.removed_references.join('; ')) : null);
+}
+
+// voice input (browser speech recognition; text input always works)
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SR) {
+  $('micBtn').hidden = false; let rec = null;
+  $('micBtn').addEventListener('click', () => {
+    if (rec) { rec.stop(); return; }
+    rec = new SR(); rec.lang = uiLang() === 'hi' ? 'hi-IN' : 'en-IN'; rec.interimResults = false;
+    $('micBtn').textContent = t().listening;
+    rec.onresult = e => { $('msg').value = ($('msg').value + ' ' + e.results[0][0].transcript).trim(); };
+    rec.onend = rec.onerror = () => { rec = null; $('micBtn').textContent = t().mic; };
+    rec.start();
+  });
+}
+
+$('form').addEventListener('submit', e => { e.preventDefault(); send($('msg').value, false); });
+$('msg').addEventListener('keydown', e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); send($('msg').value, false); } });
+$('forceBtn').addEventListener('click', () => send($('msg').value || (uiLang() === 'hi' ? 'कृपया अभी तक की जानकारी के आधार पर मार्गदर्शन दें।' : 'Please give guidance with what I have shared so far.'), true));
+$('delBtn').addEventListener('click', async () => {
+  if (!confirm(t().delC)) return;
+  if (S.caseId) await fetch('/api/case?id=' + S.caseId, {method: 'DELETE'}).catch(() => {});
+  sessionStorage.removeItem('caseId'); Object.assign(S, {caseId: null, data: null, guidance: null, doc: null}); $('chat').replaceChildren(); bubble('sys', t().welcome); applyStatic(); tab('case');
+});
+$('startBtn').addEventListener('click', () => { show(true); if (!$('chat').children.length) bubble('sys', t().welcome); $('msg').focus(); });
+$('homeBtn').addEventListener('click', () => show(false));
+$('lang').addEventListener('change', applyStatic);
+
+(async () => {
+  try { S.cfg = await api('/api/config'); } catch { }
+  if (S.caseId) { try { S.data = await api('/api/case?id=' + S.caseId); S.guidance = S.data.guidance || null; } catch { S.caseId = null; sessionStorage.removeItem('caseId'); } }
+  applyStatic();
+})();
+</script>
+</body>
+</html>
