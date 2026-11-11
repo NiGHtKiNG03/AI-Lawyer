@@ -1,10 +1,11 @@
 {
-  "name": "[Your name]",
-  "roll_no": "[Roll no.]",
-  "branch": "[Branch]",
-  "repo_link": "[GitHub / hosted link]",
-  "model_used": "[exact provider and model name used for the test run, e.g. provider / model]",
-  "run_date": "[date you ran tests/run_scenarios.py]",
+  "name": "Sandeep",
+  "roll_no": "23117127",
+  "branch": "Mechanical Engineering",
+  "repo_link": "https://github.com/NiGHtKiNG03/AI-Lawyer",
+  "streamlit": "https://ai-lawyer-52fr7kcrcduarbafb2nd3s.streamlit.app/",
+  "model_used": "gemini-3.5-flash-lite",
+  "run_date": "09-11-2026",
   "scenarios": {
     "T1 Rental deposit": null,
     "T2 Online refund": null,
