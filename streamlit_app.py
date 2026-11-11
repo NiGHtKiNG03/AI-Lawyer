@@ -79,10 +79,79 @@ def _init():
     return True
 
 
+T["en"].update({
+    "chips": ["Not a lawyer", "Only verified sources are cited", "English + हिन्दी"],
+    "steps": ["Describe", "Answer questions", "Guidance", "Draft letter"],
+    "cover": "What this can help with today",
+    "cards": [("Rent and deposits", "Deposit not returned, unexplained deductions, agreement disputes."),
+              ("Consumer refunds", "Defective products, online refunds, service complaints."),
+              ("Unpaid salary", "Unpaid or delayed pay, deductions, pay after leaving a job.")],
+    "try": "Or tap an example to start:",
+    "examples": ["My landlord is refusing to return my ₹20,000 security deposit even though I vacated the apartment.",
+                 "I paid ₹5,000 for earbuds online. They stopped working in a week and the seller refuses a refund.",
+                 "My company has not paid my last two months of salary after I left."],
+    "example_labels": ["Deposit not returned", "Refund refused", "Salary unpaid"],
+    "m_cat": "Category", "m_loc": "Location", "m_amt": "Amount",
+})
+T["hi"].update({
+    "chips": ["वकील नहीं", "केवल सत्यापित स्रोत", "English + हिन्दी"],
+    "steps": ["बताइए", "सवालों के जवाब", "मार्गदर्शन", "पत्र का मसौदा"],
+    "cover": "आज यह किसमें मदद कर सकता है",
+    "cards": [("किराया और जमा राशि", "जमा राशि वापस न मिलना, बिना कारण कटौती, एग्रीमेंट विवाद।"),
+              ("उपभोक्ता रिफंड", "खराब सामान, ऑनलाइन रिफंड, सेवा शिकायतें।"),
+              ("बकाया वेतन", "बकाया या देर से वेतन, कटौती, नौकरी छोड़ने के बाद का वेतन।")],
+    "try": "या शुरू करने के लिए कोई उदाहरण चुनें:",
+    "examples": ["मेरे मकान मालिक ने मेरी 20,000 रुपये की सिक्योरिटी डिपॉज़िट वापस नहीं की, जबकि मैंने फ्लैट खाली कर दिया है।",
+                 "मैंने ऑनलाइन 5,000 रुपये के ईयरबड्स खरीदे। एक हफ्ते में खराब हो गए और विक्रेता रिफंड नहीं दे रहा।",
+                 "नौकरी छोड़ने के बाद कंपनी ने मेरी पिछले दो महीने की सैलरी नहीं दी।"],
+    "example_labels": ["जमा राशि नहीं मिली", "रिफंड से इनकार", "वेतन बकाया"],
+    "m_cat": "श्रेणी", "m_loc": "स्थान", "m_amt": "राशि",
+})
+
+CSS = """
+<style>
+.stApp{background:#f2f5f3}
+h1,h2,h3,h4{font-family:Georgia,'Iowan Old Style',Palatino,serif !important;color:#12231f;letter-spacing:-.01em}
+footer,#MainMenu{visibility:hidden}
+header[data-testid="stHeader"]{background:transparent}
+.block-container{padding-top:1.6rem;max-width:860px}
+.hero{background:#12231f;color:#fff;border-radius:12px;padding:22px 24px;margin-bottom:14px}
+.hero h1{color:#fff !important;font-size:2.1rem;margin:0 0 4px 0}
+.hero p{color:#c9d8d3;margin:0 0 12px 0;font-size:1.02rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid #3b5a52;color:#e4f2ee;border-radius:999px;padding:2px 12px;font-size:.82rem}
+.stepper{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px 0}
+.step{border:1px solid #cbd6d1;background:#fff;color:#4a5c56;border-radius:999px;padding:3px 13px;font-size:.84rem}
+.step.done{background:#e4f2ee;color:#0a4f44;border-color:#9fd0c4}
+.step.on{background:#0e6b5c;color:#fff;border-color:#0e6b5c;font-weight:600}
+.card{background:#fff;border:1px solid #cbd6d1;border-left:5px solid #0e6b5c;border-radius:6px;padding:10px 14px;margin:8px 0}
+.card.cat{border-left-color:#0e6b5c;min-height:96px}
+.card.warn{border-left-color:#a8620a;background:#fbf1e2}
+.card.seal{border-left-color:#a32a2a;background:#fbeaea}
+.card h4{margin:0 0 4px 0;font-size:1.02rem}
+.card p{margin:0;color:#4a5c56;font-size:.93rem}
+.tag{display:inline-block;font-size:.74rem;border:1px solid #cbd6d1;background:#fff;border-radius:999px;padding:0 9px;margin:6px 6px 0 0;color:#4a5c56}
+.tag.ok{background:#e4f2ee;border-color:#9fd0c4;color:#0a4f44}
+.tag.mid{background:#fbf1e2;border-color:#e3c590;color:#7a4607}
+.tag.bad{background:#fbeaea;border-color:#e1a5a5;color:#8a1f1f}
+[data-testid="stChatMessage"]{background:#fff;border:1px solid #cbd6d1;border-radius:10px;padding:.5rem .9rem}
+[data-testid="stSidebar"]{background:#e4ebe7}
+.stButton>button{border-radius:8px;border:1.5px solid #0e6b5c;font-weight:600}
+.disc{color:#4a5c56;font-size:.82rem;border-top:1px solid #cbd6d1;padding-top:10px;margin-top:18px}
+</style>
+"""
+
+VERIF_CLASS = {"verified": "ok", "secondary_verified": "ok", "single_secondary": "mid", "general_principle": "mid", "pending_section": "bad"}
+
+
+def esc(t):
+    return html.escape(str(t))
+
+
 def ss():
     s = st.session_state
     for k, v in (("case_id", None), ("chat", []), ("guidance", None), ("doc", None), ("extra", None),
-                 ("error", None), ("count", 0), ("view", "chat"), ("lang", "auto")):
+                 ("error", None), ("count", 0), ("view", "chat"), ("lang", "auto"), ("pending", None)):
         if k not in s:
             s[k] = v
     return s
@@ -94,30 +163,54 @@ def ui_lang(s, case):
     return "hi" if case and case.get("language") == "hi" else "en"
 
 
+def hero(x):
+    chips = "".join(f'<span class="chip">{esc(c)}</span>' for c in x["chips"])
+    st.markdown(f'<div class="hero"><h1>⚖️ {esc(x["title"])}</h1><p>{esc(x["sub"])}</p><div class="chips">{chips}</div></div>', unsafe_allow_html=True)
+
+
+def stepper(s, x):
+    stage = 3 if s.doc else 2 if s.guidance else 1 if s.case_id else 0
+    out = []
+    for i, label in enumerate(x["steps"]):
+        cls = "on" if i == stage else "done" if i < stage else ""
+        out.append(f'<span class="step {cls}">{i + 1}. {esc(label)}</span>')
+    st.markdown('<div class="stepper">' + "".join(out) + "</div>", unsafe_allow_html=True)
+
+
 def cite_card(r, x):
-    sec = f", Section {r['section']}" if r.get("section") else f" ({x['no_sec']})"
-    with st.container(border=True):
-        st.markdown(f"**{r['act']}**{sec}  \n{r['title']}")
-        st.caption(f"{x['verif'].get(r['verification'], r['verification'])} | {x['checked']} {r['checked_on']}")
-        if r.get("jurisdiction_note"):
-            st.caption(r["jurisdiction_note"])
-        st.markdown(f"[{x['src']}]({r['source_url']})")
+    sec = f", Section {esc(r['section'])}" if r.get("section") else f" <span style='color:#4a5c56'>({esc(x['no_sec'])})</span>"
+    tagc = VERIF_CLASS.get(r["verification"], "")
+    note = f"<p>{esc(r['jurisdiction_note'])}</p>" if r.get("jurisdiction_note") else ""
+    st.markdown(
+        f'<div class="card"><h4>{esc(r["act"])}{sec}</h4><p>{esc(r["title"])}</p>{note}'
+        f'<span class="tag {tagc}">{esc(x["verif"].get(r["verification"], r["verification"]))}</span>'
+        f'<span class="tag">{esc(x["checked"])} {esc(r["checked_on"])}</span>'
+        f'<span class="tag"><a href="{esc(r["source_url"])}" target="_blank" rel="noopener noreferrer">{esc(x["src"])}</a></span></div>',
+        unsafe_allow_html=True)
 
 
 def bullets(items):
     for i in items or []:
-        st.markdown(f"- {i if isinstance(i, str) else i}")
+        st.markdown(f"- {i}")
 
 
 def items_block(items, x):
     for i in items or []:
-        tags = [x["kinds"].get(i.get("kind"), i.get("kind", ""))]
+        tags = f'<span class="tag">{esc(x["kinds"].get(i.get("kind"), i.get("kind", "")))}</span>'
         if i.get("supported") is False:
-            tags.append(x["unsup"])
+            tags += f'<span class="tag bad">{esc(x["unsup"])}</span>'
         if i.get("kb_ids"):
-            tags.append(", ".join(i["kb_ids"]))
-        st.markdown(f"- {i['text']}")
-        st.caption(" | ".join(tags))
+            tags += f'<span class="tag ok">{esc(", ".join(i["kb_ids"]))}</span>'
+        st.markdown(f'<div class="card"><p style="color:#12231f">{esc(i["text"])}</p>{tags}</div>', unsafe_allow_html=True)
+
+
+def alert_card(title, lines, kind="seal"):
+    body = "".join(f"<li>{esc(l)}</li>" for l in lines)
+    st.markdown(f'<div class="card {kind}"><h4>{esc(title)}</h4><ul style="margin:4px 0 0 18px;padding:0">{body}</ul></div>', unsafe_allow_html=True)
+
+
+def start_example(text):
+    st.session_state.pending = text
 
 
 def process(s, text, force=False):
@@ -148,8 +241,16 @@ def process(s, text, force=False):
 
 def view_chat(s, x):
     if not s.chat:
+        st.markdown(f"#### {x['cover']}")
+        cols = st.columns(3)
+        for col, (t, d) in zip(cols, x["cards"]):
+            col.markdown(f'<div class="card cat"><h4>{esc(t)}</h4><p>{esc(d)}</p></div>', unsafe_allow_html=True)
         with st.chat_message("assistant"):
             st.markdown(x["welcome"])
+        st.caption(x["try"])
+        cols = st.columns(3)
+        for n, (col, label) in enumerate(zip(cols, x["example_labels"])):
+            col.button(label, key=f"ex{n}", on_click=start_example, args=(x["examples"][n],))
     for role, text, mode in s.chat:
         with st.chat_message(role):
             if mode in ("urgent", "emergency", "out_of_scope"):
@@ -165,10 +266,12 @@ def view_case(c, x):
     st.subheader(c.get("title") or x["case"])
     st.write(c["summary"])
     amt = f"Rs {int(c['amount_inr']):,}" if isinstance(c.get("amount_inr"), (int, float)) else "-"
-    st.markdown(f"**{x['category']}:** {x['cats'].get(c['category'], c['category'])}  \n"
-                f"**{x['location']}:** {(c.get('slots') or {}).get('location', '-')}  \n**{x['amount']}:** {amt}")
+    m1, m2, m3 = st.columns(3)
+    m1.metric(x["m_cat"], x["cats"].get(c["category"], c["category"]))
+    m2.metric(x["m_loc"], (c.get("slots") or {}).get("location", "-"))
+    m3.metric(x["m_amt"], amt)
     if c.get("escalation"):
-        st.error("**" + x["adv"] + "**\n\n" + "\n".join(f"- {e['reason']}" for e in c["escalation"]))
+        alert_card(x["adv"], [e["reason"] for e in c["escalation"]], "seal")
     if c.get("parties"):
         st.markdown(f"**{x['parties']}**")
         bullets([p.get("role", "") + (": " + p["name"] if p.get("name") else "") for p in c["parties"]])
@@ -181,7 +284,7 @@ def view_case(c, x):
         st.markdown(f"**{x['evidence']}**")
         bullets(c["evidence"])
     if c.get("missing_information"):
-        st.warning(f"**{x['missing']}**\n\n" + "\n".join(f"- {m['question']}" for m in c["missing_information"]))
+        alert_card(x["missing"], [m["question"] for m in c["missing_information"]], "warn")
     if c.get("ai_interpretations"):
         st.info(f"**{x['ai']}**\n\n" + "\n".join(f"- {i}" for i in c["ai_interpretations"]))
 
@@ -195,7 +298,7 @@ def view_guidance(s, x):
         return
     if g.get("advocate_recommended"):
         reasons = list(g.get("advocate_reasons") or []) + [r["reason"] for r in g.get("advocate_reasons_system") or []]
-        st.error(f"**{x['adv']}**\n\n" + "\n".join(f"- {r}" for r in reasons))
+        alert_card(x["adv"], reasons, "seal")
     else:
         st.write(x["adv_no"])
     st.markdown(f"#### {x['problem']}")
@@ -208,14 +311,13 @@ def view_guidance(s, x):
     bullets(g.get("next_steps"))
     st.markdown(f"#### {x['keep']}")
     bullets(g.get("evidence_to_preserve"))
-    st.markdown(f"#### {x['unc']}")
-    st.warning("\n".join(f"- {u}" for u in (g.get("uncertainties") or []) + (g.get("missing_information") or [])) or "-")
+    unc = (g.get("uncertainties") or []) + (g.get("missing_information") or [])
+    alert_card(x["unc"], unc or ["-"], "warn")
     st.markdown(f"#### {x['refs']}")
     for r in g.get("citations") or []:
         cite_card(r, x)
     if g.get("removed_references"):
         st.error(x["removed"] + " " + "; ".join(g["removed_references"]))
-    st.caption(g.get("disclaimer", ""))
 
 
 def doc_html(d, body):
@@ -246,14 +348,14 @@ def view_docs(s, c, x, lang):
     d = s.doc
     if not d:
         return
-    st.error(d["banner"])
+    alert_card("AI draft", [d["banner"]], "seal")
     st.markdown(f"**{d['title']}**")
     body = st.text_area(x["edit"], key="doc_body", height=420)
     c1, c2 = st.columns(2)
     c1.download_button(x["dl_txt"], d["banner"] + "\n\n" + body, file_name=f"{d['doc_type']}.txt", mime="text/plain")
     c2.download_button(x["dl_html"], doc_html(d, body), file_name=f"{d['doc_type']}.html", mime="text/html")
     if d["placeholders"]:
-        st.warning(f"**{x['ph2']}**\n\n" + "\n".join(f"- {p}" for p in d["placeholders"]))
+        alert_card(x["ph2"], d["placeholders"], "warn")
     if d["notes_for_user"]:
         st.markdown(f"**{x['notes']}**")
         bullets(d["notes_for_user"])
@@ -264,7 +366,8 @@ def view_docs(s, c, x, lang):
 
 
 def main():
-    st.set_page_config(page_title="Nyaya Sahayak", page_icon="⚖️", layout="centered")
+    st.set_page_config(page_title="Nyaya Sahayak", page_icon="⚖️", layout="centered", initial_sidebar_state="collapsed")
+    st.markdown(CSS, unsafe_allow_html=True)
     _init()
     s = ss()
     case = db.get_case(s.case_id) if s.case_id else None
@@ -280,19 +383,21 @@ def main():
             st.rerun()
         st.caption(texts.PRIVACY[ui_lang(s, case)])
 
-    # chat_input is pinned to the bottom of the page; handle its submission before drawing the views
-    prompt = st.chat_input(x["ph"])
+    # chat_input is pinned to the bottom of the page; handle submissions before drawing the views
+    prompt = st.chat_input(x["ph"]) or s.pending
+    s.pending = None
     if force and s.case_id:
         process(s, "कृपया अभी तक की जानकारी के आधार पर मार्गदर्शन दें।" if ui_lang(s, case) == "hi"
                 else "Please give guidance with what I have shared so far.", force=True)
     elif prompt:
         process(s, prompt)
-        s.view = s.view if s.view == "guid" else "chat"
+        if s.view != "guid":
+            s.view = "chat"
     case = db.get_case(s.case_id) if s.case_id else None
     x = T[ui_lang(s, case)]
 
-    st.title(x["title"])
-    st.caption(x["sub"])
+    hero(x)
+    stepper(s, x)
     st.radio("view", ["chat", "case", "guid", "docs"], key="view", horizontal=True,
              format_func=lambda k: x[k], label_visibility="collapsed")
     if s.error:
@@ -306,8 +411,7 @@ def main():
         view_guidance(s, x)
     else:
         view_docs(s, cv, x, ui_lang(s, case))
-    st.divider()
-    st.caption(texts.DISCLAIMER[ui_lang(s, case)])
+    st.markdown(f'<div class="disc">{esc(texts.DISCLAIMER[ui_lang(s, case)])}</div>', unsafe_allow_html=True)
 
 
 main()
