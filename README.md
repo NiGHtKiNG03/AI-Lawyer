@@ -18,6 +18,16 @@ Free keys: Google AI Studio (Gemini free tier) works with `LLM_PROVIDER=gemini`.
 works with `LLM_PROVIDER=openai_compat` plus `LLM_BASE_URL`. `LLM_PROVIDER=anthropic` is also supported. To swap the model, change
 two lines in `.env`. To add a provider, add one function to `lawyer/llm.py`.
 
+## Streamlit version (for Streamlit Community Cloud)
+
+`streamlit_app.py` is a second front end over the same backend (`lawyer/`), so safety rules, the knowledge base and citation checks are identical.
+Differences from the main web app: no voice input, no per-IP rate limit (a 60-message cap per session instead), and "PDF" is an HTML download you
+open and print to PDF from your browser (this keeps Hindi text correct).
+
+Run locally: `pip install -r requirements.txt` then `streamlit run streamlit_app.py` (reads `.env`, or `.streamlit/secrets.toml`).
+Deploy: Streamlit Community Cloud, main file `streamlit_app.py`, put the values from `.streamlit/secrets.toml.example` into the app's Secrets. Cases are kept in a temporary
+SQLite file, so they disappear when the app restarts.
+
 ## If the AI step fails
 
 - `python tools/test_llm.py` checks your key and model in one call. `python tools/list_models.py` lists the model names your key can use (model names get retired; set `LLM_MODEL` in `.env`).
@@ -26,7 +36,7 @@ two lines in `.env`. To add a provider, add one function to `lawyer/llm.py`.
 ## Tests
 
 ```bash
-python3 -m unittest tests.test_deterministic -v   # offline, no key: tests the code safeguards only (citation scrubber, safety rules, KB integrity)
+python3 -m unittest tests.test_deterministic tests.test_routing -v   # offline, no key: tests the code (citation scrubber, safety rules, KB integrity, routing with a stand-in model)
 python3 tests/run_scenarios.py                    # needs a key: runs the 6 required scenarios + a Hindi bonus; saves UNEDITED outputs to raw_outputs/
 python3 tests/run_scenarios.py T4 T5              # run a subset
 ```
